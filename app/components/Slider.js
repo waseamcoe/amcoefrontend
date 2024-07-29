@@ -83,7 +83,7 @@ export default function Slider() {
             <p className="text-font animate">A group picture of our lectures at the matriculation of our newly admitted students. A group picture of our lectures at the school. A group picture of our lectures at the school.</p>
             <Button myclass={"animate"} label={"Learn More"} />
           </div>
-          <img src="../images/amcoe14.jpeg" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247571/amcoe14_hhuwbm.jpg" />
         </div>
 
         <div className="slider" onTransitionEnd={() => endTransition(this)}>
@@ -93,7 +93,7 @@ export default function Slider() {
             <p className="text-font">Our hard working students that thrieve in all situation. A group picture of our lectures at the school.</p>
             <Button label={"Learn More"} />
           </div>
-          <img src="../images/amcoe18.jpeg" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247570/amcoe26_au3tyh.jpg" />
         </div>
 
         <div className="slider">
@@ -103,7 +103,7 @@ export default function Slider() {
             <p className="text-font">During our last convention. A group picture of our lectures at the school. A group picture of our lectures at the school.</p>
             <Button label={"Learn More"} />
           </div>
-          <img src="../images/amcoe20.jpeg" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247567/amcoe20_srfqru.jpg" />
         </div>
 
         <div className="slider">
@@ -113,7 +113,7 @@ export default function Slider() {
             <p className="text-font">During our last convention. A group picture of our lectures at the school. A group picture of our lectures at the school.</p>
             <Button label={"Learn More"} />
           </div>
-          <img src="../images/amco5.jpeg" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247565/amco5_xfj8dr.jpg" />
         </div>
       </div>
     </div>

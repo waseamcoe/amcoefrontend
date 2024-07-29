@@ -11,7 +11,7 @@ function Welcome() {
             <h1>The Provost</h1>
           </div>
           <div className="welcome-description-img">
-            <img src="../images/amcoe32.png" />
+            <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247570/amcoe32_osv81g.png" />
           </div>
           <p className="text-font">Wase Local Government Area and its environs are highly educationally disadvantaged. The 12th Emir of Wase, HRH Alhaji Abdullahi Maikano who laid an exemplary penchant for community based educational and infrastructural development initiated the establishment of JNI school in Wase. The 13th Emir, HRH, Dr. Haruna Abdullahi continued the good work and established the JNI Primary and Secondary Schools. By the early 2010 the Federal Government made the far reaching declaration that the Nigeria Certificate of Education (NCE) was henceforth the minimum requirement for teaching in the primary schools in the country...</p>
           {/* <button className="resource">Read More</button> */}
@@ -26,7 +26,7 @@ function Welcome() {
             </h1>
           </div>
           <div className="welcome-description-img" style={{ float: "none", margin: 0, width: "100%", marginBottom: "20px", height: "200px" }}>
-            <img src="../images/amco5.jpeg" />
+            <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247565/amco5_xfj8dr.jpg" />
           </div>
           <div>
             <p className="text-font">Computer science students during their visit to the national data center, which is among the biggest data centers in the nation</p>
