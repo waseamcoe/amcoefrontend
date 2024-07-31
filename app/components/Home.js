@@ -7,6 +7,7 @@ import Navigation from "./Navigation"
 import Slider from "./Slider"
 import Welcome from "./Welcome"
 import NewsAndEvents from "./NewsAndEvents"
+import CourseCategories from "./CourseCategories"
 
 function Home() {
   return (
@@ -14,8 +15,9 @@ function Home() {
       <Navigation />
       <Slider />
       <Welcome />
-      <MissionPane />
       <NewsAndEvents />
+      <MissionPane />
+      <CourseCategories />
       <Footer />
     </>
   )

@@ -15,7 +15,7 @@ function SingleDeptPage() {
               <img src="../images/prof.jpeg" />
             </div>
             <div className="dept-s1-caption">
-              <h2>Prof. Ilyasu I. Bawa</h2>
+              <h2 className="heading-font">Prof. Ilyasu I. Bawa</h2>
               <p className="text-font">Dean</p>
             </div>
           </div>
@@ -24,16 +24,16 @@ function SingleDeptPage() {
             <p className="text-font">It is my great pleasure to welcome you to the Faculty of Art, University of Lagos, the largest Faculty in the University. The Faculty is known for excellence and pace-setting in the areas of Culture, teaching and community development. We provide the platform for our promising graduates to be well equipped with sufficient knowledge to meet the manpower demand in the society and at the same time imbibe the culture of self-employment and job creation.</p>
           </div>
           <div className="dept-sidebar3">
-            <h2 className="heading-font">Quick Links</h2>
+            <h2 className="heading-font">Departments</h2>
             <ul>
               <li>
                 <a href="#" className="text-font">
-                  Our Staff
+                  Department of Islamic Studies
                 </a>
               </li>
               <li>
                 <a href="#" className="text-font">
-                  Publications and Achievements
+                  Department of social studies
                 </a>
               </li>
             </ul>
@@ -43,7 +43,7 @@ function SingleDeptPage() {
           <div className="about-text-flex">
             <div className="sidebar">
               <div className="about-text-h">
-                <h2>Vision</h2>
+                <h2 className="heading-font">Vision</h2>
               </div>
               <div className="about-text-p">
                 <p className="text-font">To be outstanding in: (a) the integration of teaching and learning, enhancement of human knowledge through research and scholarship, and (4) leadership in service. The Scholars and Professionals prepared thereby shall provide exemplary educational and related services and leadership to improve the lives of individuals and to contribute to broad human development </p>
@@ -51,7 +51,7 @@ function SingleDeptPage() {
             </div>
             <div className="sidebar">
               <div className="about-text-h">
-                <h2>Mission</h2>
+                <h2 className="heading-font">Mission</h2>
               </div>
               <div className="about-text-p">
                 <p className="text-font">To produce outstanding educators, researchers, and leaders thereby advancing the broadly defined profession of education and enhancing national development. </p>

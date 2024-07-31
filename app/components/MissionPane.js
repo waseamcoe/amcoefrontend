@@ -47,7 +47,7 @@ function MissionPane() {
               <h3 className="text-font">Want to know more About the College?</h3>
             </div>
           </Link>
-          <img src="../images/amcoe23.jpeg" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247568/amcoe23_xfotn2.jpg" />
         </div>
         <div className="pane-text-container">
           <div className="pane-navs-container">
