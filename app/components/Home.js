@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 // components
 import Footer from "./Footer"
@@ -10,6 +10,9 @@ import NewsAndEvents from "./NewsAndEvents"
 import CourseCategories from "./CourseCategories"
 
 function Home() {
+  useEffect(() => {
+    document.title = "AMCOE | Home"
+  }, [])
   return (
     <>
       <Navigation />

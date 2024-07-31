@@ -1,10 +1,15 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Footer from "./Footer"
 import Navigation from "./Navigation"
 
 function SingleDeptPage() {
   const deptName = useParams()
+
+  // setting the title for this page
+  useEffect(() => {
+    document.title = "AMCOE | Islamic Studies"
+  }, [])
   return (
     <>
       <Navigation />
@@ -12,7 +17,7 @@ function SingleDeptPage() {
         <section className="dept-flex-cont">
           <div className="dept-sidebar1">
             <div className="dept-s1-img-cont">
-              <img src="../images/prof.jpeg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722424816/prof_zgolrq.jpg" />
             </div>
             <div className="dept-s1-caption">
               <h2 className="heading-font">Prof. Ilyasu I. Bawa</h2>

@@ -56,7 +56,40 @@ function NewsAndEvents() {
         <div ref={slideContainer} className="news-flex">
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://educator.qodeinteractive.com/wp-content/uploads/2017/07/h3-image-2.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247572/amcoe16_d5wzfl.jpg" />
+            </div>
+            <div className="new-head-cont">
+              <h2 className="heading-font">Graduate Admission</h2>
+            </div>
+            <div className="new-para-cont">
+              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div>
+          </div>
+          <div className="news-box">
+            <div className="news-img-cont">
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247565/amco5_xfj8dr.jpg" />
+            </div>
+            <div className="new-head-cont">
+              <h2 className="heading-font">JAMB Approval</h2>
+            </div>
+            <div className="new-para-cont">
+              <p className="text-font">Abdullahi Mai-kano is now on JAMB portal, we have been accredired and approved by JAMB. You can now select AMCO wase as your first choice during your JAMB registration</p>
+            </div>
+          </div>
+          <div className="news-box">
+            <div className="news-img-cont">
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247565/amcoe17_kcfvps.jpg" />
+            </div>
+            <div className="new-head-cont">
+              <h2 className="heading-font">Graduate Admission</h2>
+            </div>
+            <div className="new-para-cont">
+              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+            </div>
+          </div>
+          <div className="news-box">
+            <div className="news-img-cont">
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247567/amcoe21_w3jczg.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">Graduate Admission</h2>
@@ -78,40 +111,7 @@ function NewsAndEvents() {
           </div>
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://educator.qodeinteractive.com/wp-content/uploads/2017/07/h3-image-4.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">Graduate Admission</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div>
-          </div>
-          <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://educator.qodeinteractive.com/wp-content/uploads/2017/07/h3-image-2.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">Graduate Admission</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div>
-          </div>
-          <div className="news-box">
-            <div className="news-img-cont">
-              <img src="../images/amco5.jpeg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">JAMB Approval</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Abdullahi Mai-kano is now on JAMB portal, we have been accredired and approved by JAMB. You can now select AMCO wase as your first choice during your JAMB registration</p>
-            </div>
-          </div>
-          <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://educator.qodeinteractive.com/wp-content/uploads/2017/07/h3-image-4.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247568/amcoe22_s5wk5i.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">Graduate Admission</h2>
