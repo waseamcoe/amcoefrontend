@@ -1,20 +1,22 @@
 import React from "react"
 
+import { Link } from "react-router-dom"
+
 function Footer() {
   return (
     <footer className="footer-container">
       <div className="footer-flex-container">
         <div>
-          <h4>FACILITIES AND SERVICES</h4>
+          <h4>FACILITIES</h4>
           <ul>
             <li className="text-font">
-              <a href="#">College Health services</a>
+              <Link to={"/health"}>College Health services</Link>
             </li>
             <li className="text-font">
-              <a href="#">Counselling</a>
+              <Link to={"/under-construction"}>Counselling</Link>
             </li>
             <li className="text-font">
-              <a href="#">Electricity Bulk Metering Unit</a>
+              <Link to={"/under-construction"}>Electricity Bulk Metering Unit</Link>
             </li>
           </ul>
         </div>
@@ -22,16 +24,16 @@ function Footer() {
           <h4>QUICK LINKS</h4>
           <ul>
             <li className="text-font">
-              <a href="#">Admission</a>
+              <Link to={"/under-construction"}>Admission</Link>
             </li>
             <li className="text-font">
-              <a href="#">About Us</a>
+              <Link to={"/under-construction"}>About Us</Link>
             </li>
             <li className="text-font">
-              <a href="#">Portals</a>
+              <Link to={"/under-construction"}>Portals</Link>
             </li>
             <li className="text-font">
-              <a href="#">Login</a>
+              <Link to={"/under-construction"}>Login</Link>
             </li>
           </ul>
         </div>
@@ -39,13 +41,13 @@ function Footer() {
           <h4>CALENDER</h4>
           <ul>
             <li className="text-font">
-              <a href="#">Academic Calender</a>
+              <Link to={"/under-construction"}>Academic Calender</Link>
             </li>
             <li className="text-font">
-              <a href="#">Event Calender</a>
+              <Link to={"/under-construction"}>Event Calender</Link>
             </li>
             <li className="text-font">
-              <a href="#">Recruitment Calender</a>
+              <Link to={"/under-construction"}>Recruitment Calender</Link>
             </li>
           </ul>
         </div>
@@ -53,16 +55,16 @@ function Footer() {
           <h4>RESEARCH</h4>
           <ul>
             <li className="text-font">
-              <a href="#">Awards</a>
+              <Link to={"/under-construction"}>Awards</Link>
             </li>
             <li className="text-font">
-              <a href="#">Events</a>
+              <Link to={"/under-construction"}>Events</Link>
             </li>
             <li className="text-font">
-              <a href="#">Online Community</a>
+              <Link to={"/under-construction"}>Online Community</Link>
             </li>
             <li className="text-font">
-              <a href="#">Project</a>
+              <Link to={"/under-construction"}>Project</Link>
             </li>
           </ul>
         </div>
@@ -70,19 +72,19 @@ function Footer() {
           <h4>ALUMNI</h4>
           <ul>
             <li className="text-font">
-              <a href="#">Awards</a>
+              <Link to={"/under-construction"}>Awards</Link>
             </li>
             <li className="text-font">
-              <a href="#">Leardership</a>
+              <Link to={"/under-construction"}>Leardership</Link>
             </li>
             <li className="text-font">
-              <a href="#">Online Community</a>
+              <Link to={"/under-construction"}>Online Community</Link>
             </li>
             <li className="text-font">
-              <a href="#">Project</a>
+              <Link to={"/under-construction"}>Project</Link>
             </li>
             <li className="text-font">
-              <a href="#">About Us</a>
+              <Link to={"/under-construction"}>About Us</Link>
             </li>
           </ul>
         </div>

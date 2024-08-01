@@ -50,8 +50,8 @@ function NewsAndEvents() {
   return (
     <>
       <section className="news-cont">
-        <div className="headings">
-          <h2 className="headings news-headidng">News and Events</h2>
+        <div className="">
+          <h1 className="headings news-headidng">News and Events</h1>
         </div>
         <div ref={slideContainer} className="news-flex">
           <div className="news-box">

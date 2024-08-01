@@ -90,7 +90,7 @@ export default function Slider() {
           <div className="overlay"></div> {/* {For the overlay} */}
           <div className="background-description">
             <h1>Meet Our Students</h1>
-            <p className="text-font">Our hard working students that thrieve in all situation. A group picture of our lectures at the school.</p>
+            <p className="text-font">AMCOE Wase students cross section at Matriculation Ceremony</p>
             <Button label={"Learn More"} />
           </div>
           <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247570/amcoe26_au3tyh.jpg" />
@@ -99,8 +99,8 @@ export default function Slider() {
         <div className="slider">
           <div className="overlay"></div> {/* {For the overlay} */}
           <div className="background-description">
-            <h1>Study At AMCOE Wase</h1>
-            <p className="text-font">During our last convention. A group picture of our lectures at the school. A group picture of our lectures at the school.</p>
+            <h1>Wase Juku</h1>
+            <p className="text-font">Wase Jukun Cultural Dance at the College Matriculation Ceremony</p>
             <Button label={"Learn More"} />
           </div>
           <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247567/amcoe20_srfqru.jpg" />

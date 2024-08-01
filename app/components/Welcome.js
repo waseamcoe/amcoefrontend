@@ -7,13 +7,19 @@ function Welcome() {
     <>
       <div className="welcome-content-container">
         <div className="welcome-description">
-          <div className="content-headers">
+          {/* <div className="content-headers">
             <h1>The Provost</h1>
-          </div>
+          </div> */}
           <div className="welcome-description-img">
-            <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722424708/amcoe31-removebg-preview_z3dkbm.png" />
+            <div className="welcome-desc-img-cont">
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722424708/amcoe31-removebg-preview_z3dkbm.png" />
+            </div>
+            <div className="provost-name">
+              <h3 className="heading-font">Prof. Ibrahim Haruna Al-Wasewi</h3>
+              <p className="text-font">Projost AMCOE Wase</p>
+            </div>
           </div>
-          <p className="text-font">Wase Local Government Area and its environs are highly educationally disadvantaged. The 12th Emir of Wase, HRH Alhaji Abdullahi Maikano who laid an exemplary penchant for community based educational and infrastructural development initiated the establishment of JNI school in Wase. The 13th Emir, HRH, Dr. Haruna Abdullahi continued the good work and established the JNI Primary and Secondary Schools. By the early 2010 the Federal Government made the far reaching declaration that the Nigeria Certificate of Education (NCE) was henceforth the minimum requirement for teaching in the primary schools in the country...</p>
+          <p className="text-font">Wase Local Government Area and its environs are highly educationally disadvantaged. The 12th Emir of Wase, HRH Alhaji Abdullahi Maikano who laid an exemplary penchant for community based educational and infrastructural development initiated the establishment of JNI school in Wase. The 13th Emir, HRH, Dr. Haruna Abdullahi continued the good work and established the JNI Primary and Secondary Schools. By the early 2010 the Federal Government made the far reaching declaration that the Nigeria Certificate of Education (NCE) was henceforth the minimum requirement for teaching in the primary schools in the country with Five Million Naira non-refundable application fee for the establishment of the NCCE awarding Abdullahi Maikano College of Education, Wase...</p>
           {/* <button className="resource">Read More</button> */}
           <Link to={"/history-of-amcoe"}>
             <Button label={"Read More"} />

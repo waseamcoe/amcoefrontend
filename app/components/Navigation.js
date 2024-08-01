@@ -22,41 +22,9 @@ function Navigation() {
     }
   }
 
-  function rotateIcon(e) {
-    if (window.innerWidth < 500) {
-      let dropDown = e.children[2]
-      if (!dropDown.parentElement.children[1].classList.contains("rotate")) {
-        dropDown.parentElement.children[1].classList.add("rotate")
-      } else {
-        dropDown.parentElement.children[1].classList.remove("rotate")
-      }
-    }
-  }
-
-  function showDropDown(e) {
-    closeCurrentTab()
-    if (e.nodeName === "A") {
-      let dropDown = e.children[2]
-      rotateIcon(e)
-      dropDown.classList.toggle("showNav")
-    } else {
-      setSelectedElem(e)
-      rotateIcon(e.parentElement)
-      e.parentElement.children[2].classList.toggle("showNav")
-    }
-  }
-
-  function closeCurrentTab() {
-    if (selectedElem) {
-      console.log(selectedElem)
-    } else {
-      setSelectedElem(null)
-    }
-  }
-
   return (
     <>
-      <div onClick={closeCurrentTab} className="nav-overlay"></div>
+      {/* <div onClick={closeCurrentTab} className="nav-overlay"></div> */}
       <div className="header">
         <div className="logo">
           <div className="logo-img">
@@ -79,18 +47,11 @@ function Navigation() {
         <div className="nav-bar">
           <div className="nav">
             <ul>
-              <a
-                style={{ flexDirection: "row", alignItems: "center" }}
-                onClick={e => {
-                  e.preventDefault()
-                  showDropDown(e.target)
-                }}
-                href="#"
-              >
+              <a style={{ flexDirection: "row", alignItems: "center" }} href="#">
                 <li>Programme</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <Link to="/department/general-studies">
+                  <Link to="/school/Arts-and-social-science">
                     <li>
                       School of Arts and Social Science
                       {/* <ul className="nav-ul-inner-inner">
@@ -104,6 +65,8 @@ function Navigation() {
                         </a>
                       </ul> */}
                     </li>
+                  </Link>
+                  <Link to="/school/Languages">
                     <li>
                       School of Languages
                       {/* <ul className="nav-ul-inner-inner">
@@ -117,6 +80,8 @@ function Navigation() {
                         </a>
                       </ul> */}
                     </li>
+                  </Link>
+                  <Link to="/school/Sciences">
                     <li>
                       School of Sciences
                       {/* <ul className="nav-ul-inner-inner">
@@ -133,6 +98,8 @@ function Navigation() {
                         </a>
                       </ul> */}
                     </li>
+                  </Link>
+                  <Link to="/school/Education">
                     <li>
                       School of Education
                       {/* <ul className="nav-ul-inner-inner">
@@ -144,34 +111,44 @@ function Navigation() {
                   </Link>
                 </ul>
               </a>
-              <a style={{ flexDirection: "row", alignItems: "center" }} onClick={e => showDropDown(e.target)} href="#">
+              <Link style={{ flexDirection: "row", alignItems: "center" }} to={"Admission"}>
                 <li>Admission</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <a href="#">
+                  <Link to={"/pre-nce"}>
                     <li>Pre-NCE</li>
+                  </Link>
+                  <Link to={"/nce"}>
                     <li>NCE</li>
+                  </Link>
+                  <Link to={"/diploma"}>
                     <li>Diploma</li>
-                  </a>
+                  </Link>
                 </ul>
-              </a>
-              <a style={{ flexDirection: "row", alignItems: "center" }} onClick={e => showDropDown(e.target)} href="#">
+              </Link>
+              <a style={{ flexDirection: "row", alignItems: "center" }} href="#">
                 <li>Portal</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <a href="#">
+                  <Link to={"/email"}>
                     <li>Email</li>
+                  </Link>
+                  <Link to={"/student/portal"}>
                     <li>Student Portal</li>
+                  </Link>
+                  <Link to={"/student/elearning"}>
                     <li>E-learning</li>
+                  </Link>
+                  <Link to={"/alumni"}>
                     <li>Alumni</li>
-                  </a>
+                  </Link>
                 </ul>
               </a>
 
-              <a style={{ flexDirection: "row", alignItems: "center" }} href="#">
+              <Link style={{ flexDirection: "row", alignItems: "center" }} to={"/library"}>
                 <li>Library</li>
-              </a>
-              <Link style={{ flexDirection: "row", alignItems: "center" }} onClick={e => showDropDown(e.target)} href="#">
+              </Link>
+              <Link style={{ flexDirection: "row", alignItems: "center" }} to={"/history-of-amcoe"}>
                 <li>About Us</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
@@ -181,33 +158,33 @@ function Navigation() {
                   <Link to="/history-of-amcoe">
                     <li>History of AMCOE</li>
                   </Link>
-                  <Link href="#">
+                  <Link to={"/life-in-amcoe"}>
                     <li>Life in AMCOE</li>
                   </Link>
-                  <Link href="#">
+                  <Link to={"programmes"}>
                     <li>Programmes</li>
                   </Link>
-                  <Link href="#">
+                  <Link to={"/contact"}>
                     <li>Contact us</li>
                   </Link>
                 </ul>
               </Link>
-              <a style={{ flexDirection: "row", alignItems: "center" }} onClick={e => showDropDown(e.target)} href="#">
+              <a style={{ flexDirection: "row", alignItems: "center" }} href="#">
                 <li>News</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <a href="#">
+                  <Link to={"/school/news"}>
                     <li>News Headlines</li>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link to={"/school/news"}>
                     <li>Special Bulletin</li>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link to={"/school/news"}>
                     <li>News and Magazine</li>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link to={"/symposis"}>
                     <li>Symposis</li>
-                  </a>
+                  </Link>
                 </ul>
               </a>
               <a style={{ flexDirection: "row", alignItems: "center" }} href="#">

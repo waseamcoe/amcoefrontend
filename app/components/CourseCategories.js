@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 function CourseCategories() {
   return (
@@ -8,7 +9,7 @@ function CourseCategories() {
       </div>
       <div className="category-flex-container">
         <div className="category-flex-box">
-          <a href="#">
+          <Link to={"/school/Arts-and-social-sciences"}>
             <div className="category-icon-cont">
               <i className="fa-solid fa-graduation-cap"></i>
             </div>
@@ -20,10 +21,10 @@ function CourseCategories() {
                 2 Departments<i class="fa-solid fa-arrow-right"></i>
               </p>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="category-flex-box">
-          <a href="#">
+          <Link to={"/school/Language"}>
             <div className="category-icon-cont">
               <i className="fa-solid fa-graduation-cap"></i>
             </div>
@@ -35,10 +36,10 @@ function CourseCategories() {
                 2 Departments<i class="fa-solid fa-arrow-right"></i>
               </p>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="category-flex-box">
-          <a href="#">
+          <Link to={"/school/Science"}>
             <div className="category-icon-cont">
               <i className="fa-solid fa-graduation-cap"></i>
             </div>
@@ -50,10 +51,10 @@ function CourseCategories() {
                 5 Departments<i class="fa-solid fa-arrow-right"></i>
               </p>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="category-flex-box">
-          <a href="#">
+          <Link to={"/school/Education"}>
             <div className="category-icon-cont">
               <i className="fa-solid fa-graduation-cap"></i>
             </div>
@@ -65,7 +66,7 @@ function CourseCategories() {
                 2 Departments<i class="fa-solid fa-arrow-right"></i>
               </p>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

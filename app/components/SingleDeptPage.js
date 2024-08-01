@@ -8,7 +8,9 @@ function SingleDeptPage() {
 
   // setting the title for this page
   useEffect(() => {
-    document.title = "AMCOE | Islamic Studies"
+    console.log(deptName)
+    document.title = `AMCOE | ${deptName.name}`
+    window.scrollTo(0, 0)
   }, [])
   return (
     <>
@@ -20,7 +22,7 @@ function SingleDeptPage() {
               <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722424816/prof_zgolrq.jpg" />
             </div>
             <div className="dept-s1-caption">
-              <h2 className="heading-font">Prof. Ilyasu I. Bawa</h2>
+              <h2 className="heading-font">Prof. M. Ahamd</h2>
               <p className="text-font">Dean</p>
             </div>
           </div>
