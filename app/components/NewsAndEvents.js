@@ -56,7 +56,7 @@ function NewsAndEvents() {
         <div ref={slideContainer} className="news-flex">
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247572/amcoe16_d5wzfl.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247572/amcoe16_d5wzfl.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">Graduate Admission</h2>
@@ -67,7 +67,7 @@ function NewsAndEvents() {
           </div>
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247565/amco5_xfj8dr.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247565/amco5_xfj8dr.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">JAMB Approval</h2>
@@ -78,7 +78,7 @@ function NewsAndEvents() {
           </div>
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247565/amcoe17_kcfvps.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247565/amcoe17_kcfvps.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">Graduate Admission</h2>
@@ -89,7 +89,7 @@ function NewsAndEvents() {
           </div>
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247567/amcoe21_w3jczg.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247567/amcoe21_w3jczg.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">Graduate Admission</h2>
@@ -111,7 +111,7 @@ function NewsAndEvents() {
           </div>
           <div className="news-box">
             <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722247568/amcoe22_s5wk5i.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247568/amcoe22_s5wk5i.jpg" />
             </div>
             <div className="new-head-cont">
               <h2 className="heading-font">Graduate Admission</h2>

@@ -16,11 +16,11 @@ function VisionAndMission() {
           <div className="about-head-overlay"></div>
           <h1>Our Vision and Mission</h1>
         </div>
-        <div className="about-text-cont">
+        <div className="about-text-cont about-text-cont2">
           <div className="about-text-flex">
             <div className="sidebar">
               <div className="about-text-h">
-                <h2>Vision Statement</h2>
+                <h2 className="heading-font">Vision Statement</h2>
               </div>
               <div className="about-text-p">
                 <p className="text-font">To be outstanding in: (a) the integration of teaching and learning, enhancement of human knowledge through research and scholarship, and (4) leadership in service. The Scholars and Professionals prepared thereby shall provide exemplary educational and related services and leadership to improve the lives of individuals and to contribute to broad human development </p>
@@ -28,7 +28,7 @@ function VisionAndMission() {
             </div>
             <div className="sidebar">
               <div className="about-text-h">
-                <h2>Mission Statement</h2>
+                <h2 className="heading-font">Mission Statement</h2>
               </div>
               <div className="about-text-p">
                 <p className="text-font">To produce outstanding educators, researchers, and leaders thereby advancing the broadly defined profession of education and enhancing national development. </p>
@@ -38,7 +38,7 @@ function VisionAndMission() {
           <div className="about-text-flex">
             <div className="sidebar">
               <div className="about-text-h">
-                <h2>Goal</h2>
+                <h2 className="heading-font">Goal</h2>
               </div>
               <div className="about-text-p">
                 <p className="text-font">To prepare educational professionals recognized for the quality and significance of their teaching, research, scholarship, service, and leadership ii Inculcate goodness to others, sincerity, truthfulness, piety and decency.</p>
@@ -56,7 +56,7 @@ function VisionAndMission() {
             </div>
             <div className="sidebar">
               <div className="about-text-h">
-                <h2>Phylosophy</h2>
+                <h2 className="heading-font">Phylosophy</h2>
               </div>
               <div className="about-text-p">
                 <p className="text-font">The overriding philosophy of the College is the production of qualified and competent professional teachers and leaders with a strong religious ground and spirit of patriotism and selfless service to humanity. </p>

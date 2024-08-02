@@ -15,6 +15,14 @@ function About() {
         <div className="about-head">
           <div className="about-head-overlay"></div>
           <h1>History of AMCOE</h1>
+          <h2 className="heading-font">
+            Home{" "}
+            <span className="about-icon">
+              <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+              <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+            </span>{" "}
+            History of AMCOE
+          </h2>
         </div>
         {/* <div className="about-text-cont">
           <div className="about-text-h">
@@ -29,7 +37,7 @@ function About() {
 
         <div className="about-text-cont">
           <div className="about-text-h">
-            <h2>Historical Background</h2>
+            <h2 className="heading-font">Historical Background</h2>
           </div>
           <div className="about-text-p">
             <p className="text-font">Wase Local Government Area and its environs are highly educationally disadvantaged. The 12th Emir of Wase, HRH Alhaji Abdullahi Maikano who laid an exemplary penchant for community based educational and infrastructural development initiated the establishment of JNI school in Wase. The 13th Emir, HRH, Dr. Haruna Abdullahi continued the good work and established the JNI Primary and Secondary Schools. By the early 2010 the Federal Government made the far reaching declaration that the Nigeria Certificate of Education (NCE) was henceforth the minimum requirement for teaching in the primary schools in the country. Therefore the Alhaji Musa Abdullahi, Danburam Nyalun, led EXCO of the Wase LGA Chapter of the JNI took up the challenge and worked tirelessly to establish an NCE awarding College. The leadership drew support from the state Chairman and National Vice Chairman of the JNI, his Royal Highness the 14th Emir of Wase, Dr Muhammadu Sambo Haruna who is in every way like his forebears with respect to community based development of the Wase Local Government Area. </p>

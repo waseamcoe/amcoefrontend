@@ -19,7 +19,7 @@ function SingleDeptPage() {
         <section className="dept-flex-cont">
           <div className="dept-sidebar1">
             <div className="dept-s1-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722424816/prof_zgolrq.jpg" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_50/v1722424816/prof_zgolrq.jpg" />
             </div>
             <div className="dept-s1-caption">
               <h2 className="heading-font">Prof. M. Ahamd</h2>
@@ -28,7 +28,7 @@ function SingleDeptPage() {
           </div>
           <div className="dept-sidebar2">
             <h2 className="heading-font">Welcome</h2>
-            <p className="text-font">It is my great pleasure to welcome you to the Faculty of Art, University of Lagos, the largest Faculty in the University. The Faculty is known for excellence and pace-setting in the areas of Culture, teaching and community development. We provide the platform for our promising graduates to be well equipped with sufficient knowledge to meet the manpower demand in the society and at the same time imbibe the culture of self-employment and job creation.</p>
+            <p className="text-font">It is my great pleasure to welcome you to the Faculty of Art, Abdullahi Mai-Kano Wase. The college is known for excellence and pace-setting in the areas of Culture, teaching and community development. We provide the platform for our promising graduates to be well equipped with sufficient knowledge to meet the manpower demand in the society and at the same time imbibe the culture of self-employment and job creation.</p>
           </div>
           <div className="dept-sidebar3">
             <h2 className="heading-font">Departments</h2>
@@ -46,7 +46,7 @@ function SingleDeptPage() {
             </ul>
           </div>
         </section>
-        <div className="about-text-cont">
+        <div className="about-text-cont about-text-cont2">
           <div className="about-text-flex">
             <div className="sidebar">
               <div className="about-text-h">
