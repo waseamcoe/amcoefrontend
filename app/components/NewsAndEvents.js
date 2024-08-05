@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
+
+import Button from "./ReusableComp/Button"
 
 function NewsAndEvents() {
   const [counter, setCounter] = useState(0)
+  const newsBox = useRef(null)
 
   const slideContainer = useRef(null)
 
   const disableButton = { color: "grey" }
 
   function slideNext() {
+    // console.log(newsBox.current)
     if (window.innerWidth < 500) {
       if (counter <= 5) {
         slideContainer.current.style.left = `-${counter * 100}%`
@@ -54,71 +59,143 @@ function NewsAndEvents() {
           <h1 className="headings news-headidng">News and Events</h1>
         </div>
         <div ref={slideContainer} className="news-flex">
-          <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247572/amcoe16_d5wzfl.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">Graduate Admission</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div>
+          <div ref={newsBox} className="news-box">
+            <Link to={"/news/id"}>
+              <div className="news-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247572/amcoe16_d5wzfl.jpg" />
+              </div>
+              <div className="new-head-cont">
+                <h2 className="heading-font">Graduate Admission</h2>
+              </div>
+              <div className="new-para-cont">
+                <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">04</h3>
+                  <p className="text-font">Jan</p>
+                </div>
+              </div>
+              <div className="news-btn">
+                <Button label={"Read More"} />
+              </div>
+            </Link>
           </div>
           <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247565/amco5_xfj8dr.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">JAMB Approval</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Abdullahi Mai-kano is now on JAMB portal, we have been accredired and approved by JAMB. You can now select AMCO wase as your first choice during your JAMB registration</p>
-            </div>
+            <Link to={"news/something/id"}>
+              <div className="news-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247565/amco5_xfj8dr.jpg" />
+              </div>
+              <div className="new-head-cont">
+                <h2 className="heading-font">JAMB Approval</h2>
+              </div>
+              <div className="new-para-cont">
+                <p className="text-font">Abdullahi Mai-kano is now on JAMB portal, we have been accredired and approved by JAMB. You can now select AMCO wase as your first choice during your JAMB registration</p>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">08</h3>
+                  <p className="text-font">Apr</p>
+                </div>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">04</h3>
+                  <p className="text-font">Feb</p>
+                </div>
+              </div>
+              <div className="news-btn">
+                <Button label={"Read More"} />
+              </div>
+            </Link>
           </div>
           <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247565/amcoe17_kcfvps.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">Graduate Admission</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div>
+            <Link to={"news/something/id"}>
+              <div className="news-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247565/amcoe17_kcfvps.jpg" />
+              </div>
+              <div className="new-head-cont">
+                <h2 className="heading-font">Graduate Admission</h2>
+              </div>
+              <div className="new-para-cont">
+                <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">14</h3>
+                  <p className="text-font">Mar</p>
+                </div>
+              </div>
+              <div className="news-btn">
+                <Button label={"Read More"} />
+              </div>
+            </Link>
           </div>
           <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247567/amcoe21_w3jczg.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">Graduate Admission</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div>
+            <Link to={"news/something/id"}>
+              <div className="news-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247567/amcoe21_w3jczg.jpg" />
+              </div>
+              <div className="new-head-cont">
+                <h2 className="heading-font">Graduate Admission</h2>
+              </div>
+              <div className="new-para-cont">
+                <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">28</h3>
+                  <p className="text-font">Oct</p>
+                </div>
+              </div>
+              <div className="news-btn">
+                <Button label={"Read More"} />
+              </div>
+            </Link>
           </div>
           <div className="news-box">
-            <div className="news-img-cont">
-              <img src="../images/amco5.jpeg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">JAMB Approval</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Abdullahi Mai-kano is now on JAMB portal, we have been accredired and approved by JAMB. You can now select AMCO wase as your first choice during your JAMB registration</p>
-            </div>
+            <Link to={"news/something/id"}>
+              <div className="news-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247568/amcoe22_s5wk5i.jpg" />
+              </div>
+              <div className="new-head-cont">
+                <h2 className="heading-font">JAMB Approval</h2>
+              </div>
+              <div className="new-para-cont">
+                <p className="text-font">Abdullahi Mai-kano is now on JAMB portal, we have been accredired and approved by JAMB. You can now select AMCO wase as your first choice during your JAMB registration</p>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">16</h3>
+                  <p className="text-font">Dec</p>
+                </div>
+              </div>
+              <div className="news-btn">
+                <Button label={"Read More"} />
+              </div>
+            </Link>
           </div>
           <div className="news-box">
-            <div className="news-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247568/amcoe22_s5wk5i.jpg" />
-            </div>
-            <div className="new-head-cont">
-              <h2 className="heading-font">Graduate Admission</h2>
-            </div>
-            <div className="new-para-cont">
-              <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
-            </div>
+            <Link to={"news/something/id"}>
+              <div className="news-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_20/v1722247568/amcoe22_s5wk5i.jpg" />
+              </div>
+              <div className="new-head-cont">
+                <h2 className="heading-font">Graduate Admission</h2>
+              </div>
+              <div className="new-para-cont">
+                <p className="text-font">Lorem ipsum dolor sit amet, consectetur adip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              </div>
+              <div className="news-date">
+                <div className="news-date-inner">
+                  <h3 className="heading-font">22</h3>
+                  <p className="text-font">Sep</p>
+                </div>
+              </div>
+              <div className="news-btn">
+                <Button label={"Read More"} />
+              </div>
+            </Link>
           </div>
         </div>
         <div className="news-nav">

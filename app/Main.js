@@ -10,6 +10,7 @@ import VisionAndMission from "./components/VisionAndMission"
 import Loading from "./components/Loading"
 import { Suspense } from "react"
 import PageNotFound from "./components/PageNotFound"
+import SingleNewsPage from "./components/SingleNewsPage"
 const SingleDeptPage = React.lazy(() => import("./components/SingleDeptPage"))
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Home />} exact />
-            <Route path="/vision-and-mission" element={<VisionAndMission />} />
-            <Route path="/history-of-amcoe" element={<About />} />
+            <Route path="/vision-and-mission" element={<VisionAndMission />} exact />
+            <Route path="/history-of-amcoe" element={<About />} exact />
             <Route path="/department/:name" element={<SingleDeptPage />} />
             <Route path="/school/:name" element={<SingleDeptPage />} />
+            <Route path="/news/:title/:id" element={<SingleNewsPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Suspense>
