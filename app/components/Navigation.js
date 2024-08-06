@@ -29,7 +29,7 @@ function Navigation() {
         <div className="logo">
           <div className="logo-img">
             <Link to="/">
-              <img src="https://res.cloudinary.com/dlbtbf6vy/image/upload/v1710271781/logo_x5lxz6.jpg" alt="logo" />
+              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_10/v1722691227/1000075734_hlznks.png" alt="logo" />
             </Link>
           </div>
           <div className="logo-head">
@@ -51,7 +51,7 @@ function Navigation() {
                 <li>Programme</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <Link to="/school/Arts-and-social-science">
+                  <Link to="/school/Arts">
                     <li>
                       School of Arts and Social Science
                       {/* <ul className="nav-ul-inner-inner">
@@ -111,7 +111,7 @@ function Navigation() {
                   </Link>
                 </ul>
               </a>
-              <Link style={{ flexDirection: "row", alignItems: "center" }} to={"Admission"}>
+              <Link style={{ flexDirection: "row", alignItems: "center" }} to={"#"}>
                 <li>Admission</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">

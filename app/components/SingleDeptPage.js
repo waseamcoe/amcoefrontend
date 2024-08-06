@@ -1,74 +1,97 @@
-import React, { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { useParams, Link } from "react-router-dom"
+import Axios from "axios"
+const url = "https://waseamcoe.onrender.com"
+
+// components
 import Footer from "./Footer"
 import Navigation from "./Navigation"
+import SmallLoading from "./SmallLoading"
 
 function SingleDeptPage() {
   const deptName = useParams()
+  const [courseDetail, setCourseDetail] = useState(null)
+
+  // fetched relevant school detail in the database
+  async function getSchoolDetails() {
+    try {
+      const response = await Axios.get(`${url}/school/${deptName.name}`)
+      setCourseDetail(response.data)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
   // setting the title for this page
   useEffect(() => {
-    console.log(deptName)
     document.title = `AMCOE | ${deptName.name}`
     window.scrollTo(0, 0)
+    getSchoolDetails()
   }, [])
+
+  useEffect(() => {
+    setCourseDetail(null)
+    getSchoolDetails()
+  }, [deptName])
+
   return (
     <>
       <Navigation />
-      <div className="dept-cont">
-        <section className="dept-flex-cont">
-          <div className="dept-sidebar1">
-            <div className="dept-s1-img-cont">
-              <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_50/v1722424816/prof_zgolrq.jpg" />
-            </div>
-            <div className="dept-s1-caption">
-              <h2 className="heading-font">Prof. M. Ahamd</h2>
-              <p className="text-font">Dean</p>
-            </div>
-          </div>
-          <div className="dept-sidebar2">
-            <h2 className="heading-font">Welcome</h2>
-            <p className="text-font">It is my great pleasure to welcome you to the Faculty of Art, Abdullahi Mai-Kano Wase. The college is known for excellence and pace-setting in the areas of Culture, teaching and community development. We provide the platform for our promising graduates to be well equipped with sufficient knowledge to meet the manpower demand in the society and at the same time imbibe the culture of self-employment and job creation.</p>
-          </div>
-          <div className="dept-sidebar3">
-            <h2 className="heading-font">Departments</h2>
-            <ul>
-              <li>
-                <a href="#" className="text-font">
-                  Department of Islamic Studies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-font">
-                  Department of social studies
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <div className="about-text-cont about-text-cont2">
-          <div className="about-text-flex">
-            <div className="sidebar">
-              <div className="about-text-h">
-                <h2 className="heading-font">Vision</h2>
+      {courseDetail ? (
+        <div className="dept-cont">
+          <section className="dept-flex-cont">
+            <div className="dept-sidebar1">
+              <div className="dept-s1-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg" alt="Picture of the HOD" />
               </div>
-              <div className="about-text-p">
-                <p className="text-font">To be outstanding in: (a) the integration of teaching and learning, enhancement of human knowledge through research and scholarship, and (4) leadership in service. The Scholars and Professionals prepared thereby shall provide exemplary educational and related services and leadership to improve the lives of individuals and to contribute to broad human development </p>
+              <div className="dept-s1-caption">
+                <h2 className="heading-font">{`${courseDetail.staff.firstname} ${courseDetail.staff.middlename} ${courseDetail.staff.lastname}`}</h2>
+                <p className="text-font">{courseDetail.staff.portfolio}</p>
               </div>
             </div>
-            <div className="sidebar">
-              <div className="about-text-h">
-                <h2 className="heading-font">Mission</h2>
+            <div className="dept-sidebar2">
+              <h2 className="heading-font">Welcome</h2>
+              <p className="text-font">{courseDetail.description}</p>
+            </div>
+            <div className="dept-sidebar3">
+              <h2 className="heading-font">Departments</h2>
+              <ul>
+                {courseDetail.departments.map(dept => (
+                  <li>
+                    <Link to={dept.toLowerCase()} className="text-font">
+                      {dept}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+          <div className="about-text-cont about-text-cont2">
+            <div className="about-text-flex">
+              <div className="sidebar">
+                <div className="about-text-h">
+                  <h2 className="heading-font">Vision</h2>
+                </div>
+                <div className="about-text-p">
+                  <p className="text-font">{courseDetail.vision}</p>
+                </div>
               </div>
-              <div className="about-text-p">
-                <p className="text-font">To produce outstanding educators, researchers, and leaders thereby advancing the broadly defined profession of education and enhancing national development. </p>
+              <div className="sidebar">
+                <div className="about-text-h">
+                  <h2 className="heading-font">Mission</h2>
+                </div>
+                <div className="about-text-p">
+                  <p className="text-font">{courseDetail.mission}</p>
+                </div>
               </div>
             </div>
+            <div className="about-text-flex"></div>
           </div>
-          <div className="about-text-flex"></div>
         </div>
-      </div>
-      <Footer />
+      ) : (
+        <SmallLoading />
+      )}
+      {courseDetail ? <Footer /> : ""}
     </>
   )
 }
