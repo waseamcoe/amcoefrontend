@@ -1611,6 +1611,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+  position: relative;
 }
 
 .admin-school-list-head {

@@ -4,6 +4,7 @@
   "main": "Main.js",
   "author": "Inuwa",
   "license": "MIT",
+  "proxy": "https://amcoewase.edu.ng",
   "scripts": {
     "dev": "npm-run-all -s generate webpackDev",
     "webpackDev": "webpack serve",
