@@ -25,7 +25,7 @@ function App() {
     isEditNewsOpen: false,
     isEditSchoolOpen: false,
     isEditDepartmentOpen: false,
-    backendURL: "http://waseamcoe.onrender.com",
+    backendURL: "https://waseamcoe.onrender.com",
     user: {},
     school: {},
     news: {},
