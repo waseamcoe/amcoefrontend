@@ -89,18 +89,18 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div class="logo-container">
-        <div class="logo-container-inner">
-          <div class="facebook-container">
+      <div className="logo-container">
+        <div className="logo-container-inner">
+          <div className="facebook-container">
             <img src="https://res.cloudinary.com/dlbtbf6vy/image/upload/v1710277834/fb_qvh7ap.png" alt="facebook" />
           </div>
-          <div class="twitter-container">
+          <div className="twitter-container">
             <img src="https://res.cloudinary.com/dlbtbf6vy/image/upload/v1710277833/tw_wu1v6i.png" alt="twitter" />
           </div>
-          <div class="facebook-container">
+          <div className="facebook-container">
             <img src="https://res.cloudinary.com/dlbtbf6vy/image/upload/v1710323103/intagram_w4crtj.jpg" alt="facebook" />
           </div>
-          <div class="facebook-container">
+          <div className="facebook-container">
             <img src="https://res.cloudinary.com/dlbtbf6vy/image/upload/v1710323199/youtube-icon-2048x2048-wiwalbpx_vnf1xu.png" alt="facebook" />
           </div>
         </div>

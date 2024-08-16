@@ -1,10 +1,18 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import Button from "./ReusableComp/Button"
+import SmallLoading from "../components/SmallLoading"
+
+import StateContext from "../StateContext"
+import { useImmer } from "use-immer"
+import Axios from "axios"
 
 function Navigation() {
-  const [selectedElem, setSelectedElem] = useState(null)
+  const appState = useContext(StateContext)
   const [isNavOpen, setIsNavOpen] = useState(false)
+  const [state, setState] = useImmer({
+    schools: [],
+  })
 
   function handleClick() {
     const navlines = document.querySelectorAll(".mnav")
@@ -21,6 +29,19 @@ function Navigation() {
       setIsNavOpen(false)
     }
   }
+
+  useEffect(() => {
+    // fetch school info
+    Axios.get(`${appState.backendURL}/admin/dashboard/schools`)
+      .then(response => {
+        setState(draft => {
+          draft.schools = response.data
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   return (
     <>
@@ -51,64 +72,17 @@ function Navigation() {
                 <li>Programme</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <Link to="/school/Arts">
-                    <li>
-                      School of Arts and Social Science
-                      {/* <ul className="nav-ul-inner-inner">
-                        <a href="#">
-                          <Link to="/department/islamic-studies">
-                            <li>Department of Islamic Studies</li>
-                          </Link>
-                          <Link to="/department/social-studies">
-                            <li>Department of Social Studeies</li>
-                          </Link>
-                        </a>
-                      </ul> */}
-                    </li>
-                  </Link>
-                  <Link to="/school/Languages">
-                    <li>
-                      School of Languages
-                      {/* <ul className="nav-ul-inner-inner">
-                        <a href="#">
-                          <Link to="/department/arabic">
-                            <li>Department of Arabic</li>
-                          </Link>
-                          <Link to="/department/english">
-                            <li>Department of English</li>
-                          </Link>
-                        </a>
-                      </ul> */}
-                    </li>
-                  </Link>
-                  <Link to="/school/Sciences">
-                    <li>
-                      School of Sciences
-                      {/* <ul className="nav-ul-inner-inner">
-                        <a href="#">
-                          <Link to="/department/computer">
-                            <li>Department of Computer</li>
-                          </Link>
-                          <Link to="/department/mathematics">
-                            <li>Department of Mathematics</li>
-                          </Link>
-                          <Link to="/department/integrated-science">
-                            <li>Integrated Science</li>
-                          </Link>
-                        </a>
-                      </ul> */}
-                    </li>
-                  </Link>
-                  <Link to="/school/Education">
-                    <li>
-                      School of Education
-                      {/* <ul className="nav-ul-inner-inner">
-                        <Link to="/department/general-studies">
-                          <li>Dept. of General Education</li>
+                  {state.schools.length ? (
+                    <>
+                      {state.schools.map(school => (
+                        <Link to={`/school/${school._id}`}>
+                          <li>{school.name}</li>
                         </Link>
-                      </ul> */}
-                    </li>
-                  </Link>
+                      ))}
+                    </>
+                  ) : (
+                    <SmallLoading width={"20px"} height={"20px"} />
+                  )}
                 </ul>
               </a>
               <Link style={{ flexDirection: "row", alignItems: "center" }} to={"#"}>

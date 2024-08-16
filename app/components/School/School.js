@@ -1,0 +1,99 @@
+import React, { useContext, useState } from "react"
+import { Link } from "react-router-dom"
+import DispatchContext from "../../DispatchContext"
+import StateContext from "../../StateContext"
+import Axios from "axios"
+
+import SmallLoading from "../SmallLoading"
+
+function School(props) {
+  const [isDeleting, setIsDeleting] = useState(false)
+  const appDispatch = useContext(DispatchContext)
+  const appState = useContext(StateContext)
+  // functions
+  function handleEdit() {
+    // Update the app state user too the selected user and open the edit overlay
+    appDispatch({ type: "setEditSchool", school: { id: props.id, name: props.name, hod: props.hod, mission: props.mission, vision: props.vision, description: props.description } })
+    appDispatch({ type: "openEditSchool" })
+  }
+
+  async function handleDelete() {
+    setIsDeleting(true)
+    // send delete request to the server
+    try {
+      const response = await Axios.post(`${appState.backendURL}/delete-school`, { id: props.id })
+      if (response.data) {
+        setIsDeleting(false)
+        // if delete request is successful, update the state to reflect the change
+        props.setState(draft => {
+          draft.schools = draft.schools.filter(school => school._id !== props.id)
+        })
+      }
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+  return (
+    <div className="admin-content-box">
+      <Link to={`#`}>
+        <div className="admin-icon-main-cont">
+          <div className="admin-icon-cont">
+            <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1723382045/vecteezy_education-vector-logo-open-book-dictionary-textbook-or_4263549_yuzary.jpg" alt="staff photo" />
+          </div>
+          <div className="admin-content-box-head">
+            <h4 className="heading-font">{props.name}</h4>
+          </div>
+        </div>
+        <div className="admin-details">
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>Dean:</strong> <p className="small-font">{props.hod}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>Welcome Message:</strong> <p className="small-font">{props.description}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>School Mission:</strong> <p className="small-font">{props.mission}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>School Vision:</strong> <p className="small-font">{props.vision}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>School:</strong> <p className="small-font">{props.school}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>Departments:</strong> <p className="small-font">{}</p>
+            </p>
+          </div>
+        </div>
+        <div className="admin-content-box-button">
+          <button onClick={handleDelete} className="action-button" style={{ background: "#dc3545", fontWeight: "bold", color: "#fff", border: "none" }}>
+            {isDeleting ? (
+              <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBottom={"2px solid transparent"} />
+            ) : (
+              <>
+                <i className="fas fa-trash"></i>
+                <p>Delete</p>
+              </>
+            )}
+          </button>
+          <button className="action-button" onClick={handleEdit} style={{ background: "rgb(70, 128, 255)", fontWeight: "bold", color: "#fff", border: "none" }}>
+            <i className="fas fa-edit"></i>Edit
+          </button>
+        </div>
+      </Link>
+    </div>
+  )
+}
+
+export default School

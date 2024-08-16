@@ -8,8 +8,8 @@ import Navigation from "./Navigation"
 import SmallLoading from "./SmallLoading"
 import StateContext from "../StateContext"
 
-function SingleDeptPage() {
-  const [staff, setStaff] = useState([])
+function SingleSchoolPage() {
+  const [departments, setDepartments] = useState([])
   const appState = useContext(StateContext)
   const url = appState.backendURL
   const deptName = useParams()
@@ -17,9 +17,9 @@ function SingleDeptPage() {
   const [error, setError] = useState(false)
 
   // fetched relevant school detail in the database
-  async function getDepartmentDetails() {
+  async function getSchoolDetails() {
     try {
-      const response = await Axios.get(`${url}/department/${deptName.id}`)
+      const response = await Axios.get(`${url}/school/${deptName.id}`)
       document.title = `${response.data.name}`
       setCourseDetail(response.data)
     } catch (error) {
@@ -28,34 +28,27 @@ function SingleDeptPage() {
     }
   }
 
-  // fetch this department staff
-  async function getDepartmentStaffByName() {
-    console.log(courseDetail)
-    Axios.get(`${url}/get-departments-staff/${courseDetail.name}`)
+  // fetch this schools department
+  async function getSchoolDepartmentById() {
+    Axios.get(`${url}/get-school-departments/${deptName.id}`)
       .then(response => {
-        setStaff(response.data)
+        setDepartments(response.data)
       })
       .catch(err => {
         console.log(err)
       })
   }
 
-  // fetch staff of this department
-  useEffect(() => {
-    if (courseDetail) {
-      getDepartmentStaffByName()
-    }
-  }, [courseDetail])
-
   // setting the title for this page
   useEffect(() => {
     window.scrollTo(0, 0)
-    getDepartmentDetails()
+    getSchoolDetails()
   }, [])
 
   useEffect(() => {
     setCourseDetail(null)
-    getDepartmentDetails()
+    getSchoolDetails()
+    getSchoolDepartmentById()
   }, [deptName])
 
   return (
@@ -74,17 +67,17 @@ function SingleDeptPage() {
               </div>
             </div>
             <div className="dept-sidebar2">
-              <h2 className="heading-font">Welcome to the Department of {courseDetail.name}</h2>
+              <h2 className="heading-font">Welcome to the {courseDetail.name}</h2>
               <p className="text-font">{courseDetail.description}</p>
             </div>
             <div className="dept-sidebar3">
-              <h2 className="heading-font">Staff</h2>
-              {staff.length ? (
+              <h2 className="heading-font">Departments</h2>
+              {departments.length ? (
                 <ul>
-                  {staff.map(staff => (
+                  {departments.map(dept => (
                     <li>
-                      <Link to={"#"} className="text-font">
-                        {staff.firstname} {staff.lastname}
+                      <Link to={`/department/${dept._id}`} className="text-font">
+                        {dept.name}
                       </Link>
                     </li>
                   ))}
@@ -93,7 +86,7 @@ function SingleDeptPage() {
                 <>
                   <SmallLoading width={"30px"} height={"30px"} />
                   <p className="text-font" style={{ textAlign: "center" }}>
-                    Getting department Staff...
+                    Getting departments...
                   </p>
                 </>
               )}
@@ -129,4 +122,4 @@ function SingleDeptPage() {
   )
 }
 
-export default SingleDeptPage
+export default SingleSchoolPage

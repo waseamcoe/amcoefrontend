@@ -193,7 +193,7 @@ a {
     flex-direction: column;
     position: absolute;
     background: white;
-    top: 70px;
+    top: 90px;
     width: 90%;
     padding: 20px 0 0 20px;
     height: 100vh;
@@ -995,14 +995,15 @@ a {
 }
 
 .category-flex-container {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2em;
+  position: relative;
 }
 
 @media screen and (max-width: 600px) {
   .category-flex-container {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
   .category-flex-box {
     padding: 30px 50px;
@@ -1016,14 +1017,16 @@ a {
   flex: 1;
   color: #444;
   background: #f1f1f1;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: transform 0.3s ease-in-out;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .category-flex-box:hover {
   cursor: pointer;
   transform: translateY(-8px) rotateX(3deg);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .category-flex-box a {
@@ -1123,11 +1126,15 @@ a {
 }
 
 .dept-sidebar3 {
+  overflow: hidden;
   flex: 1;
   padding: 25px;
-  border-radius: 10px;
-  background: #f1f1f1;
+  border-radius: 5px;
+  background: rgb(248, 249, 250);
   padding-left: 35px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  margin-right: 10px;
+  position: relative;
 }
 
 @media screen and (max-width: 600px) {
@@ -1136,9 +1143,10 @@ a {
     align-items: center;
   }
   .dept-sidebar3 {
-    width: 100%;
+    width: 98%;
     border-radius: 2px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin: 0 10px;
   }
 }
 
@@ -1187,7 +1195,7 @@ a {
 .dept-sidebar3 a {
   display: block;
   margin-bottom: 10px;
-  color: blue;
+  color: #3457d5;
 }
 
 /* News component styling */
@@ -1339,11 +1347,11 @@ a {
 }
 
 .slideIn {
-  animation: navslide 0.4s ease-in-out forwards;
+  animation: navslide 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .slideOut {
-  animation: navslideout 0.4s ease-in-out forwards;
+  animation: navslideout 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .rotate {
@@ -1413,4 +1421,358 @@ a {
 
 .p404-button {
   margin-bottom: 20px;
+}
+
+/* admin dashboard styling */
+.admin-section {
+  background: rgb(248, 249, 250);
+}
+
+.admin-cont {
+  display: flex;
+  justify-items: flex-start;
+}
+
+.admin-sidebar1 {
+  height: 100vh;
+  width: 30%;
+  padding: 30px 20px;
+  border-right: 2px dotted #ccc;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+}
+
+.admin-sidebar1-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.admin-img-cont {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 200px;
+  width: 200px;
+  margin-bottom: 12px;
+}
+
+.admin-img-cont img {
+  width: 100%;
+  height: 100%;
+}
+
+.admin-menus {
+  margin-left: 20px;
+}
+
+.admin-menus ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-menus ul li {
+  list-style: none;
+  color: #777;
+}
+
+.admin-menus a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px 15px;
+  border-radius: 0 20px 20px 0;
+  transition: background 0.4s ease;
+  color: #666;
+}
+
+.admin-menus a:hover {
+  background: #f1f1f1;
+}
+
+.admin-sidebar2 {
+  width: 80%;
+  padding: 10px 50px;
+}
+
+.admin-main-head {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.notification-cont {
+  color: #3457d5;
+  font-size: 1.3rem;
+}
+
+.admin-main-contents {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5em;
+  margin-bottom: 60px;
+}
+
+.admin-content-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.admin-content-box a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.admin-content-box-head {
+  margin-bottom: 24px;
+  text-align: center;
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.admin-content-box-button {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 12px;
+}
+
+.admin-content-box-button button {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.4s ease;
+}
+
+.admin-content-box-button i {
+  margin-right: 10px;
+}
+
+.admin-content-box-button button:hover {
+  background: #f1f1f1;
+}
+
+.admin-details {
+  margin-bottom: 24px;
+}
+
+.admin-icon-main-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.admin-icon-cont {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  color: #fff;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+
+.admin-icon-cont img {
+  width: 100%;
+  height: 100%;
+}
+
+.admin-school-list-cont {
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.single-detail {
+  margin-bottom: 24px;
+}
+
+.small-font {
+  font-size: 1rem;
+}
+
+.admin-school-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.admin-school-list-head {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  justify-content: flex-end;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.admin-school-list-head button {
+  background: rgb(70, 128, 255);
+}
+
+.admin-school-list-head p {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.list-first {
+  background: rgb(248, 249, 250);
+  border-top: 1px solid #ccc;
+}
+
+.list-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* staff edit styling */
+.staff-edit-cont {
+  position: fixed;
+  background: #fff;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  overflow: hidden scroll;
+  height: 80vh;
+}
+
+.staff-edit-inner {
+  min-width: 800px;
+}
+
+.staff-edit-head {
+  padding: 20px;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 24px;
+  font-size: 1.4rem;
+  color: #444;
+}
+
+.edit-body {
+  margin: 10px 30px;
+}
+
+.edit-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.edit-row1 div:nth-child(1) {
+  width: 20%;
+}
+
+.edit-row1 div:nth-child(2) {
+  width: 40%;
+}
+
+.edit-row1 div:nth-child(3) {
+  width: 40%;
+}
+
+.edit-row12 div:nth-child(1) {
+  width: 40%;
+}
+
+.edit-row12 div:nth-child(2) {
+  width: 60%;
+}
+
+.edit-row2 div:nth-child(1) {
+  width: 70%;
+}
+
+.edit-row2 div:nth-child(2) {
+  width: 30%;
+}
+
+.edit-row3 div:nth-child(1) {
+  width: 50%;
+}
+
+.edit-row3 div:nth-child(2) {
+  width: 25%;
+}
+
+.edit-row3 div:nth-child(3) {
+  width: 25%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.input-field label {
+  color: #222;
+}
+
+.input-field input,
+.input-field select,
+.input-field textarea {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: transparent;
+  font-size: 1rem;
+  width: 100%;
+  color: #444;
+}
+
+.input-field textarea {
+  height: 200px;
+}
+
+.staff-edit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.error-msg-text {
+  color: rgb(220, 38, 38);
+  font-size: 0.9rem;
+}
+
+.edit-submit {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 36px;
 }

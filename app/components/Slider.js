@@ -11,31 +11,35 @@ export default function Slider() {
   })
 
   function slideNext() {
-    let prevElem = Array.from(slides.current.children[state.counter].children[1].children)
-    if (state.counter <= 3 - 1) {
-      let animElems = Array.from(slides.current.children[state.counter + 1].children[1].children)
-      animElems.forEach(elem => {
-        elem.classList.add("animate")
-      })
-      setState(draft => {
-        draft.counter++
-      })
-    } else {
-      setState(draft => {
-        draft.counter = 0
-      })
-    }
-    if (state.counter < 3) {
-      prevElem.forEach(elem => {
-        elem.classList.replace("animate", "none")
-      })
-    } else {
-      Array.from(slides.current.children[0].children[1].children).forEach(elem => {
-        elem.classList.add("animate")
-      })
-      Array.from(slides.current.children[state.counter].children[1].children).forEach(elem => {
-        elem.classList.replace("animate", "none")
-      })
+    try {
+      let prevElem = Array.from(slides.current.children[state.counter].children[1].children)
+      if (state.counter <= 3 - 1) {
+        let animElems = Array.from(slides.current.children[state.counter + 1].children[1].children)
+        animElems.forEach(elem => {
+          elem.classList.add("animate")
+        })
+        setState(draft => {
+          draft.counter++
+        })
+      } else {
+        setState(draft => {
+          draft.counter = 0
+        })
+      }
+      if (state.counter < 3) {
+        prevElem.forEach(elem => {
+          elem.classList.replace("animate", "none")
+        })
+      } else {
+        Array.from(slides.current.children[0].children[1].children).forEach(elem => {
+          elem.classList.add("animate")
+        })
+        Array.from(slides.current.children[state.counter].children[1].children).forEach(elem => {
+          elem.classList.replace("animate", "none")
+        })
+      }
+    } catch (err) {
+      console.log(err)
     }
   }
 
