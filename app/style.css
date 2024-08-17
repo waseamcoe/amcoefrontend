@@ -1498,7 +1498,7 @@ a {
 
 .admin-main-head {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 20px;
   margin-bottom: 50px;
 }
@@ -1644,6 +1644,36 @@ a {
   color: #fff;
   margin-left: 10px;
 }
+.admin-hamburger {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .admin-cont {
+    flex-direction: column;
+  }
+  .admin-sidebar1 {
+    width: 80%;
+    position: fixed;
+    left: -100%;
+    z-index: 2;
+    background: rgb(248, 249, 250);
+    height: 100vh;
+  }
+  .admin-hamburger {
+    display: block;
+  }
+  .admin-sidebar2 {
+    width: 100%;
+    padding: 20px;
+  }
+  .admin-main-head {
+    margin-bottom: 24px;
+  }
+  .admin-school-list {
+    grid-template-columns: 1fr;
+  }
+}
 
 .list-first {
   background: rgb(248, 249, 250);
@@ -1776,4 +1806,50 @@ a {
   justify-content: flex-end;
   gap: 1rem;
   margin-bottom: 36px;
+}
+
+@media screen and (max-width: 600px) {
+  .staff-edit-cont {
+    border-radius: 5px;
+    width: 90%;
+  }
+
+  .edit-row {
+    flex-direction: column;
+  }
+
+  .staff-edit-inner {
+    min-width: 100%;
+  }
+
+  .edit-row1 div:nth-child(odd) {
+    width: 100%;
+  }
+  .edit-row1 div:nth-child(even) {
+    width: 100%;
+  }
+  .edit-row2 div:nth-child(odd) {
+    width: 100%;
+  }
+  .edit-row2 div:nth-child(even) {
+    width: 100%;
+  }
+  .edit-row3 div:nth-child(odd) {
+    width: 100%;
+  }
+  .edit-row3 div:nth-child(even) {
+    width: 100%;
+  }
+  .edit-row4 div:nth-child(odd) {
+    width: 100%;
+  }
+  .edit-row4 div:nth-child(even) {
+    width: 100%;
+  }
+  .edit-row12 div:nth-child(odd) {
+    width: 100%;
+  }
+  .edit-row12 div:nth-child(even) {
+    width: 100%;
+  }
 }

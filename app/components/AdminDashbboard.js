@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useImmer } from "use-immer"
 import Axios from "axios"
@@ -16,6 +16,9 @@ import Department from "./Department/Department"
 import EditDepartment from "./Department/EditDepartment"
 
 function AdminDashbboard() {
+  const menu = useRef(null)
+  const sidebar = useRef(null)
+  const overlay = useRef(null)
   const name = useParams()
   const appState = useContext(StateContext)
   const appDispatch = useContext(DispatchContext)
@@ -66,6 +69,18 @@ function AdminDashbboard() {
     }
   }
 
+  function showSidebar() {
+    sidebar.current.classList.remove("slideOut")
+    overlay.current.classList.add("overlay")
+    sidebar.current.classList.add("slideIn")
+  }
+
+  function hideSidebar() {
+    overlay.current.classList.remove("overlay")
+    sidebar.current.classList.add("slideOut")
+    sidebar.current.classList.remove("slideIn")
+  }
+
   // Effects
   useEffect(() => {
     // send axios request to fetch info base on the req.param which can be staff, schools ...
@@ -75,6 +90,9 @@ function AdminDashbboard() {
           case "staff":
             setState(draft => {
               // Reset the state data to empty for the sake of next rendering
+              if (sidebar.current.classList.contains("slideIn")) {
+                hideSidebar()
+              }
               draft.schools = []
               draft.departments = []
               draft.news = []
@@ -84,6 +102,9 @@ function AdminDashbboard() {
           case "schools":
             setState(draft => {
               // Reset the state data to empty for the sake of next rendering
+              if (sidebar.current.classList.contains("slideIn")) {
+                hideSidebar()
+              }
               draft.staff = []
               draft.departments = []
               draft.news = []
@@ -93,6 +114,9 @@ function AdminDashbboard() {
           case "departments":
             setState(draft => {
               // Reset the state data to empty for the sake of next rendering
+              if (sidebar.current.classList.contains("slideIn")) {
+                hideSidebar()
+              }
               draft.staff = []
               draft.news = []
               draft.schools = []
@@ -102,6 +126,9 @@ function AdminDashbboard() {
           case "news":
             setState(draft => {
               // Reset the state data to empty for the sake of next rendering
+              if (sidebar.current.classList.contains("slideIn")) {
+                hideSidebar()
+              }
               draft.staff = []
               draft.departments = []
               draft.schools = []
@@ -124,7 +151,7 @@ function AdminDashbboard() {
       {appState.isEditDepartmentOpen ? <EditDepartment setDepartment={setState} department={state.departments} /> : ""}
       <section className="admin-section">
         <div className="admin-cont">
-          <nav className="admin-sidebar1">
+          <nav ref={sidebar} className="admin-sidebar1">
             <div className="admin-sidebar1-head">
               <div className="admin-img-cont">
                 <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg" alt="Admin Image" />
@@ -159,7 +186,11 @@ function AdminDashbboard() {
             </div>
           </nav>
           <main className="admin-sidebar2">
+            <div ref={overlay} onClick={hideSidebar}></div>
             <div className="admin-main-head">
+              <div ref={menu} onClick={showSidebar} className="notification-cont admin-hamburger">
+                <i className="fa-solid fa-bars"></i>
+              </div>
               <div className="notification-cont">
                 <i className="fa-solid fa-bell"></i>
               </div>
