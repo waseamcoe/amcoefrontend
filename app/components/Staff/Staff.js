@@ -15,24 +15,27 @@ function Staff(Props) {
   // functions
   function handleEdit() {
     // Update the app state user too the selected user and open the edit overlay
-    appDispatch({ type: "setEditUser", user: { id: Props.id, title: Props.title, firstname: Props.firstname, lastname: Props.lastname, middlename: Props.middlename, email: Props.email, acadBio: Props.acadBio, gender: Props.gender, role: Props.role, school: Props.school, department: Props.department } })
+    appDispatch({ type: "setEditUser", user: { id: Props.id, title: Props.title, firstname: Props.firstname, lastname: Props.lastname, middlename: Props.middlename, pic: Props.pic, email: Props.email, acadBio: Props.acadBio, gender: Props.gender, role: Props.role, school: Props.school, department: Props.department } })
     appDispatch({ type: "openEdit" })
   }
 
   async function handleDelete() {
-    setIsDeleting(true)
-    // send delete request to the server
-    try {
-      const response = await Axios.post(`${appState.backendURL}/delete-staff`, { id: Props.id })
-      if (response.data) {
-        setIsDeleting(false)
-        // if delete request is successful, update the state to reflect the change
-        Props.setState(draft => {
-          draft.staff = draft.staff.filter(staff => staff._id !== Props.id)
-        })
+    let sure = confirm(`Are you sure you want to delete ${Props.firstname} ${Props.lastname}`)
+    if (sure) {
+      setIsDeleting(true)
+      // send delete request to the server
+      try {
+        const response = await Axios.post(`${appState.backendURL}/delete-staff`, { id: Props.id })
+        if (response.data) {
+          setIsDeleting(false)
+          // if delete request is successful, update the state to reflect the change
+          Props.setState(draft => {
+            draft.staff = draft.staff.filter(staff => staff._id !== Props.id)
+          })
+        }
+      } catch (err) {
+        console.log(err.message)
       }
-    } catch (err) {
-      console.log(err.message)
     }
   }
 
@@ -52,16 +55,22 @@ function Staff(Props) {
         <div className="admin-details">
           <div className="single-detail">
             <p className="text-font">
+              <strong>Title:</strong> <p className="small-font">{Props.title}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
               <strong>Academin bio:</strong> <p className="small-font">{Props.acadBio}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>Gender:</strong>{" "}
-              <p className="small-font">
-                {Props.gender}
-                {Props.sex}
-              </p>
+              <strong>Gender:</strong> <p className="small-font">{Props.gender}</p>
+            </p>
+          </div>
+          <div className="single-detail">
+            <p className="text-font">
+              <strong>Email:</strong> <p className="small-font">{Props.email}</p>
             </p>
           </div>
           <div className="single-detail">

@@ -957,8 +957,8 @@ a {
 }
 
 .about-text-flex {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2em;
   width: 100%;
   margin: 0 auto;

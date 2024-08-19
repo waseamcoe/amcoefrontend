@@ -55,7 +55,7 @@ function EditStaff(props) {
           appDispatch({ type: "closeEdit" })
           appDispatch({ type: "setEditUser", user: {} })
           props.setStaff(draft => {
-            draft.staff = draft.staff.concat({ _id: response.data.insertedId, firstname: state.firstname.value, lastname: state.lastname.value, middlename: state.middlename.value, email: state.email.value, gender: state.gender.value, role: state.role.value, school: state.school.value, department: state.department.value, acadBio: state.acadBio.value })
+            draft.staff = draft.staff.concat({ _id: response.data.insertedId, firstname: state.firstname.value, lastname: state.lastname.value, middlename: state.middlename.value, title: state.title.value, email: state.email.value, gender: state.gender.value, role: state.role.value, school: state.school.value, department: state.department.value, acadBio: state.acadBio.value })
           })
         }
       } catch (err) {

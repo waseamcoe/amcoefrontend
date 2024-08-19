@@ -103,6 +103,14 @@ function SingleDeptPage() {
             <div className="about-text-flex">
               <div className="sidebar">
                 <div className="about-text-h">
+                  <h2 className="heading-font">About the {courseDetail.staff.role}</h2>
+                </div>
+                <div className="about-text-p">
+                  <p className="text-font">{courseDetail.staff.acadBio}</p>
+                </div>
+              </div>
+              <div className="sidebar">
+                <div className="about-text-h">
                   <h2 className="heading-font">Vision</h2>
                 </div>
                 <div className="about-text-p">

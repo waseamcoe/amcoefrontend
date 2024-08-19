@@ -11,7 +11,7 @@ import CourseCategories from "./CourseCategories"
 
 function Home() {
   useEffect(() => {
-    document.title = "AMCOE | Home"
+    document.title = "Home - Abdullahi Mai-Kano College of Education, Wase"
   }, [])
   return (
     <>
