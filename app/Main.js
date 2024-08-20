@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
@@ -25,11 +25,14 @@ function App() {
     isEditNewsOpen: false,
     isEditSchoolOpen: false,
     isEditDepartmentOpen: false,
-    backendURL: "https://ashamed-sibylle-waseamcoe-4c62f688.koyeb.app",
+    backendURL: "https://waseamcoe.onrender.com",
     user: {},
     school: {},
     news: {},
     department: {},
+    alertDanger: false,
+    alertSucess: false,
+    flashMessage: "",
   }
 
   function reducer(draft, action) {
@@ -87,10 +90,38 @@ function App() {
       case "setEditNews":
         draft.news = action.news
         break
+
+      // setting for flash messages
+      case "setFlashMessage":
+        draft.flashMessage = action.message
+        break
+      case "showDangerAlert":
+        draft.alertDanger = true
+        break
+      case "showSuccessAlert":
+        draft.alertSucess = true
+        break
+      case "hideDangerAlert":
+        draft.alertDanger = false
+        break
+      case "hideSuccessAlert":
+        draft.alertSucess = false
+        break
     }
   }
-
   const [state, dispatch] = useImmerReducer(reducer, initialState)
+
+  // components effects
+  useEffect(() => {
+    setTimeout(() => {
+      if (state.alertDanger) {
+        dispatch({ type: "hideDangerAlert" })
+      }
+      if (state.alertSucess) {
+        dispatch({ type: "hideSuccessAlert" })
+      }
+    }, 5000)
+  }, [state.alertDanger, state.alertSucess])
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>

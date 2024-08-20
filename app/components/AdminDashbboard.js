@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useImmer } from "use-immer"
 import Axios from "axios"
+import { CSSTransition } from "react-transition-group"
 
 import EditStaff from "./Staff/EditStaff"
 import StateContext from "../StateContext"
@@ -14,6 +15,7 @@ import News from "./News/News"
 import EditNews from "./News/EditNews"
 import Department from "./Department/Department"
 import EditDepartment from "./Department/EditDepartment"
+import FlashMessage from "./ReusableComp/FlashMessage"
 
 function AdminDashbboard() {
   const menu = useRef(null)
@@ -139,11 +141,21 @@ function AdminDashbboard() {
       })
       .catch(err => {
         console.log(err)
+        if ((err.message = "Network Error")) {
+          appDispatch({ type: "setFlashMessage", message: "Ooops, Please check your network and try again" })
+          appDispatch({ type: "showDangerAlert" })
+        } else {
+          appDispatch({ type: "setFlashMessage", message: "We ran into a problem, contact our suppose please" })
+          appDispatch({ type: "showDangerAlert" })
+        }
       })
   }, [name.name])
 
   return (
     <>
+      <CSSTransition in={appState.alertDanger || appState.alertSucess} timeout={300} classNames={"show-flash"} unmountOnExit>
+        <FlashMessage message={appState.flashMessage} myclass={appState.alertDanger ? "alert-danger" : "alert-success"} />
+      </CSSTransition>
       {appState.isEditOpen || appState.isEditNewsOpen || appState.isEditSchoolOpen || appState.isEditDepartmentOpen ? <div onClick={handleCloseOverlay} className="staff-edit-overlay"></div> : ""}
       {appState.isEditOpen ? <EditStaff newStaff={true} setStaff={setState} staff={state.staff} /> : ""}
       {appState.isEditSchoolOpen ? <EditSchool setSchool={setState} school={state.schools} /> : ""}

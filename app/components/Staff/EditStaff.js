@@ -49,6 +49,8 @@ function EditStaff(props) {
           acadBio: state.acadBio.value,
         })
         if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "New staff has been created successfully" })
+          appDispatch({ type: "showSuccessAlert" })
           setState(draft => {
             draft.isSubmitting = false
           })
@@ -59,7 +61,8 @@ function EditStaff(props) {
           })
         }
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
       }
     } else {
       setState(draft => {
@@ -82,6 +85,8 @@ function EditStaff(props) {
           acadBio: state.acadBio.value,
         })
         if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "Staff profile has been updated successfully" })
+          appDispatch({ type: "showSuccessAlert" })
           setState(draft => {
             draft.isSubmitting = false
           })
@@ -89,7 +94,8 @@ function EditStaff(props) {
           appDispatch({ type: "setEditUser", user: {} })
         }
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
       }
     }
   }
@@ -102,7 +108,8 @@ function EditStaff(props) {
         })
       })
       .catch(err => {
-        console.log(err)
+        appDispatch({ type: "setFlashMessage", message: "There is a problem fetching schoools" })
+        appDispatch({ type: "showDangerAlert" })
       })
   }
 
@@ -114,14 +121,10 @@ function EditStaff(props) {
         })
       })
       .catch(err => {
-        console.log(err)
+        appDispatch({ type: "setFlashMessage", message: "There is a problem fetching departments" })
+        appDispatch({ type: "showDangerAlert" })
       })
   }
-
-  // component effects
-  // useEffect(() => {
-  //   firstname.current.focus()
-  // }, [])
 
   useEffect(() => {
     getSchools()

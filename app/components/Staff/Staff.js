@@ -27,6 +27,8 @@ function Staff(Props) {
       try {
         const response = await Axios.post(`${appState.backendURL}/delete-staff`, { id: Props.id })
         if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "Staff profile has been successfully deleted" })
+          appDispatch({ type: "showSuccessAlert" })
           setIsDeleting(false)
           // if delete request is successful, update the state to reflect the change
           Props.setState(draft => {

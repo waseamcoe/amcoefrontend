@@ -25,14 +25,60 @@ a {
   text-align: center;
 }
 
-/* .loading-container {
-  height: 100px;
-  width: 50%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 30px;
-} */
+.alert {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  padding: 15px 30px;
+  padding: 0.95rem 1.25rem;
+  border-radius: 0.25rem;
+  font-family: "Source Sans Pro", "Lucida Grande", sans-serif;
+  z-index: 100;
+  max-width: 300px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: 0.33s visibility ease-in-out, 0.33s opacity ease-in-out, 0.33s transform ease-in-out;
+  will-change: visibility, transform, opacity;
+}
+
+.alert-danger {
+  background: #f44336 !important;
+  color: #fff;
+}
+
+.alert-success {
+  color: #fff;
+  background: #4caf50 !important;
+}
+
+.show-flash-enter {
+  transform: scale(0.8);
+  visibility: hidden;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+  opacity: 0;
+}
+
+.show-flash-enter-active {
+  visibility: visible;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+  opacity: 1;
+}
+
+.show-flash-enter-done {
+  transform: scale(1);
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms, transform 300ms;
+}
+
+.show-flash-exit {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(400px);
+  transition: opacity 300ms, transform 300ms, position 300ms;
+}
 
 .loading-cont {
   position: absolute;
