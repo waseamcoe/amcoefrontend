@@ -17,6 +17,7 @@ function Staff(Props) {
     // Update the app state user too the selected user and open the edit overlay
     appDispatch({ type: "setEditUser", user: { id: Props.id, title: Props.title, firstname: Props.firstname, lastname: Props.lastname, middlename: Props.middlename, pic: Props.pic, email: Props.email, acadBio: Props.acadBio, gender: Props.gender, role: Props.role, school: Props.school, department: Props.department } })
     appDispatch({ type: "openEdit" })
+    //
   }
 
   async function handleDelete() {
