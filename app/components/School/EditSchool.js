@@ -45,9 +45,12 @@ function EditSchool(props) {
           props.setSchool(draft => {
             draft.schools = draft.schools.concat({ _id: response.data.insertedId, name: state.name.value, hod: state.hod.value, mission: state.mission.value, vision: state.vision.value, description: state.description.value })
           })
+          appDispatch({ type: "setFlashMessage", message: "New school has been successfully created" })
+          appDispatch({ type: "showSuccessAlert" })
         }
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
       }
     } else {
       // send edit request
@@ -55,7 +58,7 @@ function EditSchool(props) {
         setState(draft => {
           draft.isSubmitting = true
         })
-        const response = await Axios.post(`${appState.backendURL}/update-school`, {
+        const response = await Axios.post(`${appState.backendURL}/update-schoo`, {
           id: appState.school.id,
           name: state.name.value,
           hod: state.hod.value,
@@ -64,14 +67,34 @@ function EditSchool(props) {
           description: state.description.value,
         })
         if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "School information has been updated successfully" })
+          appDispatch({ type: "showSuccessAlert" })
+          setState(draft => {
+            draft.isSubmitting = false
+          })
           setState(draft => {
             draft.isSubmitting = false
           })
           appDispatch({ type: "closeEditSchool" })
           appDispatch({ type: "setEditSchool", school: {} })
         }
+        props.setSchool(draft => {
+          draft.schools.map(school => {
+            if (school._id === appState.school.id) {
+              school.name = state.name.value
+              school.hod = state.hod.value
+              school.missio = state.mission.value
+              school.vision = state.vision.value
+              school.description = state.description.value
+            }
+          })
+        })
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
+        setState(draft => {
+          draft.isSubmitting = false
+        })
       }
     }
   }
@@ -85,7 +108,8 @@ function EditSchool(props) {
         })
       })
       .catch(err => {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
       })
   }, [])
 
@@ -218,7 +242,7 @@ function EditSchool(props) {
                   Cancel
                 </button>
                 <button className="action-button" style={{ background: "rgb(70, 128, 255)" }}>
-                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : "Update"}
+                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : appState.school.name ? "Update" : "Create School"}
                 </button>
               </div>
             </form>

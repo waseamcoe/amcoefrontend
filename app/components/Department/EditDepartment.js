@@ -48,6 +48,8 @@ function EditDepartment(props) {
           props.setDepartment(draft => {
             draft.departments = draft.departments.concat({ _id: response.data.insertedId, name: state.name.value, hod: state.hod.value, mission: state.mission.value, vision: state.vision.value, description: state.description.value })
           })
+          appDispatch({ type: "setFlashMessage", message: "New Department has been created" })
+          appDispatch({ type: "showSuccessAlert" })
         }
       } catch (err) {
         console.log(err.message)
@@ -68,14 +70,31 @@ function EditDepartment(props) {
           description: state.description.value,
         })
         if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "Department information has been updated successfully" })
+          appDispatch({ type: "showSuccessAlert" })
           setState(draft => {
             draft.isSubmitting = false
           })
           appDispatch({ type: "closeEditDepartment" })
           appDispatch({ type: "setEditDepartment", department: {} })
         }
+        props.setDepartment(draft => {
+          draft.departments.map(department => {
+            if (department._id === appState.department.id) {
+              department.name = state.name.value
+              department.hod = state.hod.value
+              department.mission = state.mission.value
+              department.vision = state.vision.value
+              department.description = state.description.value
+            }
+          })
+        })
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
+        setState(draft => {
+          draft.isSubmitting = false
+        })
       }
     }
   }
@@ -260,7 +279,7 @@ function EditDepartment(props) {
                   Cancel
                 </button>
                 <button className="action-button" style={{ background: "rgb(70, 128, 255)" }}>
-                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : "Update"}
+                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : appState.department.name ? "Update" : "Create Department"}
                 </button>
               </div>
             </form>

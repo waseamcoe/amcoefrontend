@@ -7,7 +7,7 @@ import SmallLoading from "../SmallLoading"
 import DispatchContext from "../../DispatchContext"
 import StateContext from "../../StateContext"
 
-function Staff(Props) {
+function Staff(props) {
   const [isDeleting, setIsDeleting] = useState(false)
   const appDispatch = useContext(DispatchContext)
   const appState = useContext(StateContext)
@@ -15,29 +15,30 @@ function Staff(Props) {
   // functions
   function handleEdit() {
     // Update the app state user too the selected user and open the edit overlay
-    appDispatch({ type: "setEditUser", user: { id: Props.id, title: Props.title, firstname: Props.firstname, lastname: Props.lastname, middlename: Props.middlename, pic: Props.pic, email: Props.email, acadBio: Props.acadBio, gender: Props.gender, role: Props.role, school: Props.school, department: Props.department } })
+    appDispatch({ type: "setEditUser", user: { id: props.id, title: props.title, firstname: props.firstname, lastname: props.lastname, middlename: props.middlename, pic: props.pic, email: props.email, acadBio: props.acadBio, gender: props.gender, role: props.role, school: props.school, department: props.department } })
     appDispatch({ type: "openEdit" })
-    //
   }
 
   async function handleDelete() {
-    let sure = confirm(`Are you sure you want to delete ${Props.firstname} ${Props.lastname}`)
+    let sure = confirm(`Are you sure you want to delete ${props.firstname} ${props.lastname}`)
     if (sure) {
       setIsDeleting(true)
       // send delete request to the server
       try {
-        const response = await Axios.post(`${appState.backendURL}/delete-staff`, { id: Props.id })
+        const response = await Axios.post(`${appState.backendURL}/delete-staff`, { id: props.id })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "Staff profile has been successfully deleted" })
           appDispatch({ type: "showSuccessAlert" })
           setIsDeleting(false)
           // if delete request is successful, update the state to reflect the change
-          Props.setState(draft => {
-            draft.staff = draft.staff.filter(staff => staff._id !== Props.id)
+          props.setState(draft => {
+            draft.staff = draft.staff.filter(staff => staff._id !== props.id)
           })
         }
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
+        setIsDeleting(false)
       }
     }
   }
@@ -47,48 +48,48 @@ function Staff(Props) {
       <Link to={`#`}>
         <div className="admin-icon-main-cont">
           <div className="admin-icon-cont">
-            <img src={Props.pic ? Props.pic : "https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg"} alt="staff photo" />
+            <img src={props.pic ? props.pic : "https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg"} alt="staff photo" />
           </div>
           <div className="admin-content-box-head">
             <h4 className="heading-font">
-              {Props.firstname} {Props.lastname} {Props.middlename}
+              {props.firstname} {props.lastname} {props.middlename}
             </h4>
           </div>
         </div>
         <div className="admin-details">
           <div className="single-detail">
             <p className="text-font">
-              <strong>Title:</strong> <p className="small-font">{Props.title}</p>
+              <strong>Title:</strong> <p className="small-font">{props.title}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>Academin bio:</strong> <p className="small-font">{Props.acadBio}</p>
+              <strong>Academin bio:</strong> <p className="small-font">{props.acadBio}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>Gender:</strong> <p className="small-font">{Props.gender}</p>
+              <strong>Gender:</strong> <p className="small-font">{props.gender}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>Email:</strong> <p className="small-font">{Props.email}</p>
+              <strong>Email:</strong> <p className="small-font">{props.email}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>Role:</strong> <p className="small-font">{Props.role}</p>
+              <strong>Role:</strong> <p className="small-font">{props.role}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>School:</strong> <p className="small-font">{Props.school}</p>
+              <strong>School:</strong> <p className="small-font">{props.school}</p>
             </p>
           </div>
           <div className="single-detail">
             <p className="text-font">
-              <strong>Department:</strong> <p className="small-font">{Props.department}</p>
+              <strong>Department:</strong> <p className="small-font">{props.department}</p>
             </p>
           </div>
         </div>

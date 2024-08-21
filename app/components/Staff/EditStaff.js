@@ -93,6 +93,23 @@ function EditStaff(props) {
           appDispatch({ type: "closeEdit" })
           appDispatch({ type: "setEditUser", user: {} })
         }
+        props.setStaff(draft => {
+          draft.staff.map(staff => {
+            if (staff._id === appState.user.id) {
+              staff.title = state.title.value
+              staff.firstname = state.firstname.value
+              staff.lastname = state.lastname.value
+              staff.middlename = state.middlename.value
+              staff.pic = state.pic.value
+              staff.acadBio = state.acadBio.value
+              staff.email = state.email.value
+              staff.gender = state.gender.value
+              staff.role = state.role.value
+              staff.school = state.school.value
+              staff.department = state.department.value
+            }
+          })
+        })
       } catch (err) {
         appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
         appDispatch({ type: "showDangerAlert" })
@@ -384,7 +401,7 @@ function EditStaff(props) {
                   Cancel
                 </button>
                 <button className="action-button" style={{ background: "rgb(70, 128, 255)" }}>
-                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : "Update"}
+                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : appState.user.firstname ? "Update" : "Create Staff"}
                 </button>
               </div>
             </form>

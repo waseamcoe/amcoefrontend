@@ -21,16 +21,23 @@ function School(props) {
     setIsDeleting(true)
     // send delete request to the server
     try {
-      const response = await Axios.post(`${appState.backendURL}/delete-school`, { id: props.id })
-      if (response.data) {
-        setIsDeleting(false)
-        // if delete request is successful, update the state to reflect the change
-        props.setState(draft => {
-          draft.schools = draft.schools.filter(school => school._id !== props.id)
-        })
+      let sure = confirm(`Are you sure you want to delete ${props.name}`)
+      if (sure) {
+        const response = await Axios.post(`${appState.backendURL}/delete-school`, { id: props.id })
+        if (response.data) {
+          // if delete request is successful, update the state to reflect the change and show flash message
+          appDispatch({ type: "setFlashMessage", message: "School has been successfully deleted" })
+          appDispatch({ type: "showSuccessAlert" })
+          setIsDeleting(false)
+          props.setState(draft => {
+            draft.schools = draft.schools.filter(school => school._id !== props.id)
+          })
+        }
       }
     } catch (err) {
-      console.log(err.message)
+      appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+      appDispatch({ type: "showDangerAlert" })
+      setIsDeleting(false)
     }
   }
   return (
@@ -68,11 +75,6 @@ function School(props) {
           <div className="single-detail">
             <p className="text-font">
               <strong>School:</strong> <p className="small-font">{props.school}</p>
-            </p>
-          </div>
-          <div className="single-detail">
-            <p className="text-font">
-              <strong>Departments:</strong> <p className="small-font">{}</p>
             </p>
           </div>
         </div>

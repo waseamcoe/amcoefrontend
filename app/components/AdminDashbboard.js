@@ -157,7 +157,7 @@ function AdminDashbboard() {
         <FlashMessage message={appState.flashMessage} myclass={appState.alertDanger ? "alert-danger" : "alert-success"} />
       </CSSTransition>
       {appState.isEditOpen || appState.isEditNewsOpen || appState.isEditSchoolOpen || appState.isEditDepartmentOpen ? <div onClick={handleCloseOverlay} className="staff-edit-overlay"></div> : ""}
-      {appState.isEditOpen ? <EditStaff newStaff={true} setStaff={setState} staff={state.staff} /> : ""}
+      {appState.isEditOpen ? <EditStaff setStaff={setState} staff={state.staff} /> : ""}
       {appState.isEditSchoolOpen ? <EditSchool setSchool={setState} school={state.schools} /> : ""}
       {appState.isEditNewsOpen ? <EditNews setNews={setState} news={state.news} /> : ""}
       {appState.isEditDepartmentOpen ? <EditDepartment setDepartment={setState} department={state.departments} /> : ""}

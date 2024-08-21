@@ -18,19 +18,26 @@ function News(props) {
   }
 
   async function handleDelete() {
-    setIsDeleting(true)
-    // send delete request to the server
-    try {
-      const response = await Axios.post(`${appState.backendURL}/delete-news`, { id: props.id })
-      if (response.data) {
+    let sure = confirm("Are you sure you want to delete this news?")
+    if (sure) {
+      setIsDeleting(true)
+      // send delete request to the server
+      try {
+        const response = await Axios.post(`${appState.backendURL}/delete-news`, { id: props.id })
+        if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "News information has been deleted successfully" })
+          appDispatch({ type: "showSuccessAlert" })
+          setIsDeleting(false)
+          // if delete request is successful, update the state to reflect the change
+          props.setState(draft => {
+            draft.news = draft.news.filter(news => news._id !== props.id)
+          })
+        }
+      } catch (err) {
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
         setIsDeleting(false)
-        // if delete request is successful, update the state to reflect the change
-        props.setState(draft => {
-          draft.news = draft.news.filter(news => news._id !== props.id)
-        })
       }
-    } catch (err) {
-      console.log(err.message)
     }
   }
   return (

@@ -41,9 +41,15 @@ function EditNews(props) {
           props.setNews(draft => {
             draft.news = draft.news.concat({ _id: response.data.insertedId, head: state.head.value, body: state.body.value, pic: state.pic.value, date: new Date().toLocaleDateString() })
           })
+          appDispatch({ type: "setFlashMessage", message: "News has been created successfully" })
+          appDispatch({ type: "showSuccessAlert" })
         }
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
+        setState(draft => {
+          draft.isSubmitting = false
+        })
       }
     } else {
       setState(draft => {
@@ -58,14 +64,29 @@ function EditNews(props) {
           pic: state.pic.value,
         })
         if (response.data) {
+          appDispatch({ type: "setFlashMessage", message: "News information has been updated successfully" })
+          appDispatch({ type: "showSuccessAlert" })
           setState(draft => {
             draft.isSubmitting = false
           })
           appDispatch({ type: "closeEditNews" })
           appDispatch({ type: "setEditNews", news: {} })
         }
+        props.setNews(draft => {
+          draft.news.map(news => {
+            if (news._id === appState.news.id) {
+              news.head = state.head.value
+              news.body = state.body.value
+              news.pic = state.pic.value
+            }
+          })
+        })
       } catch (err) {
-        console.log(err.message)
+        appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+        appDispatch({ type: "showDangerAlert" })
+        setState(draft => {
+          draft.isSubmitting = false
+        })
       }
     }
   }
@@ -155,7 +176,7 @@ function EditNews(props) {
                 Cancel
               </button>
               <button className="action-button" style={{ background: "rgb(70, 128, 255)" }}>
-                {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : "Update"}
+                {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : appState.news.head ? "Update" : "Create News"}
               </button>
             </div>
           </form>
