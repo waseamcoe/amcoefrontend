@@ -39,7 +39,7 @@ function EditNews(props) {
           appDispatch({ type: "closeEditNews" })
           appDispatch({ type: "setEditNews", news: {} })
           props.setNews(draft => {
-            draft.news = draft.news.concat({ _id: response.data.insertedId, head: state.head.value, body: state.body.value, pic: state.pic.value, date: new Date().toLocaleDateString() })
+            draft.news = draft.news.concat({ _id: response.data.insertedId, head: state.head.value, body: state.body.value, pic: state.pic.value, date: new Date() })
           })
           appDispatch({ type: "setFlashMessage", message: "News has been created successfully" })
           appDispatch({ type: "showSuccessAlert" })

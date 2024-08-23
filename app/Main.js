@@ -134,7 +134,7 @@ function App() {
               <Route path="/department/:id" element={<SingleDeptPage />} />
               <Route path="/school/:id" element={<SingleSchoolPage />} />
               <Route path="/admin/dashboard/:name" element={<AdminDashbboard />} />
-              <Route path="/news/:title/:id" element={<SingleNewsPage />} />
+              <Route path="/news/:id" element={<SingleNewsPage />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Suspense>

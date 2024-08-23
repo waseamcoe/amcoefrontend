@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import DispatchContext from "../../DispatchContext"
 import StateContext from "../../StateContext"
 import Axios from "axios"
+import Markdown from "react-markdown"
 
 import SmallLoading from "../SmallLoading"
 
@@ -51,10 +52,14 @@ function News(props) {
             <h4 className="heading-font">{props.head}</h4>
           </div>
         </div>
+
         <div className="admin-details">
           <div className="single-detail">
             <p className="text-font">
-              <strong>News Content:</strong> <p className="small-font">{props.body}</p>
+              <strong>News Content:</strong>{" "}
+              <p className="small-font">
+                <Markdown>{props.body}</Markdown>
+              </p>
             </p>
           </div>
           <div className="single-detail">

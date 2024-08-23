@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import { CSSTransition } from "react-transition-group"
 import Button from "./ReusableComp/Button"
 import SmallLoading from "../components/SmallLoading"
+import FlashMessage from "./ReusableComp/FlashMessage"
 
 import StateContext from "../StateContext"
 import { useImmer } from "use-immer"
@@ -45,7 +47,9 @@ function Navigation() {
 
   return (
     <>
-      {/* <div onClick={closeCurrentTab} className="nav-overlay"></div> */}
+      <CSSTransition in={appState.alertDanger || appState.alertSucess} timeout={300} classNames={"show-flash"} unmountOnExit>
+        <FlashMessage message={appState.flashMessage} myclass={appState.alertDanger ? "alert-danger" : "alert-success"} />
+      </CSSTransition>
       <div className="header">
         <div className="logo">
           <div className="logo-img">

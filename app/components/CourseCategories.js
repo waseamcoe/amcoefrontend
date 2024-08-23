@@ -19,7 +19,6 @@ function CourseCategories() {
     try {
       const response = await Axios.get(`${appState.backendURL}`)
       setSchools(response.data)
-      console.log(response.data)
     } catch (error) {
       if (error.message === "Network Error") {
         setError(draft => {
