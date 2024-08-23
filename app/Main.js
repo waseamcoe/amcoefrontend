@@ -25,7 +25,7 @@ function App() {
     isEditNewsOpen: false,
     isEditSchoolOpen: false,
     isEditDepartmentOpen: false,
-    backendURL: "http://192.168.217.77:8000",
+    backendURL: "https://waseamcoe.onrender.com",
     user: {},
     school: {},
     news: {},
