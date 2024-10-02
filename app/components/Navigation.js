@@ -103,7 +103,7 @@ function Navigation() {
                 <li>Portal</li>
                 <i className="fa-solid fa-angle-right"></i>
                 <ul className="nav-ul-inner">
-                  <Link to={"/email"}>
+                  <Link to={"https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=ARpgrqej55x0JpTP_UDQb6J47VCSHUgxv7YVX_ALyDwl1KiVQXMkIMJW-KMCBnohoCjwoyJCqs-1&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1041956075%3A1727556137016347&ddm=1"}>
                     <li>Email</li>
                   </Link>
                   <Link to={"/student/portal"}>

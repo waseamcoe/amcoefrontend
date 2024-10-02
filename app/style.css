@@ -1693,6 +1693,7 @@ a {
   display: flex;
   gap: 2rem;
   margin-bottom: 12px;
+  margin-top: 24px;
 }
 
 .admin-content-box-button button {
@@ -1851,6 +1852,9 @@ a {
   min-height: 100vh;
   padding: 100px;
   background: #f1f1;
+  display: grid;
+  place-content: center;
+  place-items: center;
 }
 
 .signup-instructor-container-inner {
@@ -2001,6 +2005,20 @@ a {
   max-width: 430px;
   margin: 0 auto;
   box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 600px) {
+  .signup-instructor-container {
+    padding: 20px;
+  }
+  .main-login-container-inner {
+    padding: 36px 24px;
+    border-radius: 5px;
+  }
+  .main-input {
+    padding: 10px;
+    padding-left: 20px;
+  }
 }
 
 .login-avartar {
