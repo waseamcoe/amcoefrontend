@@ -23,7 +23,7 @@ function Department(props) {
     try {
       let sure = confirm(`Are you sure you want to delete ${props.name}`)
       if (sure) {
-        const response = await Axios.post(`${appState.backendURL}/delete-department`, { id: props.id })
+        const response = await Axios.post(`${appState.backendURL}/delete-department`, { id: props.id, token: localStorage.getItem("token") })
         if (response.data) {
           // if delete request is successful, update the state to reflect the change and show flash message
           appDispatch({ type: "setFlashMessage", message: "Department has been successfully deleted" })

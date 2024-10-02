@@ -32,7 +32,7 @@ function Navigation() {
 
   useEffect(() => {
     // fetch school info
-    Axios.get(`${appState.backendURL}/admin/dashboard/schools`)
+    Axios.get(`${appState.backendURL}`)
       .then(response => {
         setState(draft => {
           draft.schools = response.data
@@ -80,7 +80,7 @@ function Navigation() {
                       ))}
                     </>
                   ) : (
-                    <SmallLoading width={"20px"} height={"20px"} />
+                    <SmallLoading width={"20px"} height={"20px"} message="Getting Details..." />
                   )}
                 </ul>
               </a>

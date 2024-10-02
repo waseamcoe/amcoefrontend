@@ -31,6 +31,7 @@ function EditNews(props) {
           body: state.body.value,
           pic: state.pic.value,
           date: new Date(),
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           setState(draft => {
@@ -62,6 +63,7 @@ function EditNews(props) {
           head: state.head.value,
           body: state.body.value,
           pic: state.pic.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "News information has been updated successfully" })

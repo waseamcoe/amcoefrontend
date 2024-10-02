@@ -24,7 +24,7 @@ function News(props) {
       setIsDeleting(true)
       // send delete request to the server
       try {
-        const response = await Axios.post(`${appState.backendURL}/delete-news`, { id: props.id })
+        const response = await Axios.post(`${appState.backendURL}/delete-news`, { id: props.id, token: localStorage.getItem("token") })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "News information has been deleted successfully" })
           appDispatch({ type: "showSuccessAlert" })

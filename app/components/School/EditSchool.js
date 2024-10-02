@@ -35,6 +35,7 @@ function EditSchool(props) {
           mission: state.mission.value,
           vision: state.vision.value,
           description: state.description.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           setState(draft => {
@@ -58,13 +59,14 @@ function EditSchool(props) {
         setState(draft => {
           draft.isSubmitting = true
         })
-        const response = await Axios.post(`${appState.backendURL}/update-schoo`, {
+        const response = await Axios.post(`${appState.backendURL}/update-school`, {
           id: appState.school.id,
           name: state.name.value,
           hod: state.hod.value,
           mission: state.mission.value,
           vision: state.vision.value,
           description: state.description.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "School information has been updated successfully" })
@@ -101,7 +103,7 @@ function EditSchool(props) {
 
   // component effects
   useEffect(() => {
-    Axios.get(`${appState.backendURL}/admin/dashboard/staff`)
+    Axios.post(`${appState.backendURL}/admin/dashboard/staff`, { token: localStorage.getItem("token") })
       .then(response => {
         setState(draft => {
           draft.staffData = response.data

@@ -16,6 +16,7 @@ import SingleNewsPage from "./components/SingleNewsPage"
 import AdminDashbboard from "./components/AdminDashbboard"
 import { useImmerReducer } from "use-immer"
 import SingleSchoolPage from "./components/SingleSchoolPage"
+import Loginpage from "./components/Staff/LoginPage"
 const SingleDeptPage = React.lazy(() => import("./components/SingleDeptPage"))
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
     isEditNewsOpen: false,
     isEditSchoolOpen: false,
     isEditDepartmentOpen: false,
-    backendURL: "https://waseamcoe.onrender.com",
+    isLogin: false,
+    backendURL: "http://192.168.132.77:8000",
     user: {},
     school: {},
     news: {},
@@ -37,6 +39,11 @@ function App() {
 
   function reducer(draft, action) {
     switch (action.type) {
+      case "login":
+        localStorage.setItem("token", action.token)
+        localStorage.setItem("userEmail", action.userEmail)
+        draft.isLogin = true
+        break
       case "openNav":
         draft.isNavOpen = true
         break
@@ -133,7 +140,7 @@ function App() {
               <Route path="/history-of-amcoe" element={<About />} exact />
               <Route path="/department/:id" element={<SingleDeptPage />} />
               <Route path="/school/:id" element={<SingleSchoolPage />} />
-              <Route path="/admin/dashboard/:name" element={<AdminDashbboard />} />
+              <Route path="/admin/dashboard/:name" element={state.isLogin ? <AdminDashbboard /> : <Loginpage />} />
               <Route path="/news/:id" element={<SingleNewsPage />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>

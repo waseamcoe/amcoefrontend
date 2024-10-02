@@ -38,6 +38,7 @@ function EditDepartment(props) {
           vision: state.vision.value,
           school: state.school.value,
           description: state.description.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           setState(draft => {
@@ -68,6 +69,7 @@ function EditDepartment(props) {
           vision: state.vision.value,
           school: state.school.value,
           description: state.description.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "Department information has been updated successfully" })
@@ -103,7 +105,7 @@ function EditDepartment(props) {
 
   // fetching staff details
   useEffect(() => {
-    Axios.get(`${appState.backendURL}/admin/dashboard/staff`)
+    Axios.post(`${appState.backendURL}/admin/dashboard/staff`, { token: localStorage.getItem("token") })
       .then(response => {
         setState(draft => {
           draft.staffData = response.data
@@ -116,7 +118,7 @@ function EditDepartment(props) {
 
   // fetching school details
   useEffect(() => {
-    Axios.get(`${appState.backendURL}/admin/dashboard/schools`)
+    Axios.post(`${appState.backendURL}/admin/dashboard/schools`, { token: localStorage.getItem("token") })
       .then(response => {
         setState(draft => {
           draft.schoolData = response.data

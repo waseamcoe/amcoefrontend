@@ -47,6 +47,7 @@ function EditStaff(props) {
           school: state.school.value,
           department: state.department.value,
           acadBio: state.acadBio.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "New staff has been created successfully" })
@@ -83,6 +84,7 @@ function EditStaff(props) {
           school: state.school.value,
           department: state.department.value,
           acadBio: state.acadBio.value,
+          token: localStorage.getItem("token"),
         })
         if (response.data) {
           appDispatch({ type: "setFlashMessage", message: "Staff profile has been updated successfully" })
@@ -118,7 +120,7 @@ function EditStaff(props) {
   }
 
   function getSchools() {
-    Axios.get(`${appState.backendURL}/admin/dashboard/schools`)
+    Axios.post(`${appState.backendURL}/admin/dashboard/schools`, { token: localStorage.getItem("token") })
       .then(response => {
         setState(draft => {
           draft.schools = response.data
@@ -131,7 +133,7 @@ function EditStaff(props) {
   }
 
   function getDepartments() {
-    Axios.get(`${appState.backendURL}/admin/dashboard/departments`)
+    Axios.post(`${appState.backendURL}/admin/dashboard/departments`, { token: localStorage.getItem("token") })
       .then(response => {
         setState(draft => {
           draft.departments = response.data

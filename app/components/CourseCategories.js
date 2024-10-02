@@ -58,7 +58,7 @@ function CourseCategories() {
             </div>
           ))
         ) : (
-          <SmallLoading />
+          <SmallLoading message="Getting Details..." />
         )}
       </div>
     </div>

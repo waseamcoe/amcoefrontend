@@ -86,7 +86,7 @@ function AdminDashbboard() {
   // Effects
   useEffect(() => {
     // send axios request to fetch info base on the req.param which can be staff, schools ...
-    Axios.get(`${appState.backendURL}/admin/dashboard/${name.name}`)
+    Axios.post(`${appState.backendURL}/admin/dashboard/${name.name}`, { token: localStorage.getItem("token") })
       .then(response => {
         switch (name.name) {
           case "staff":
@@ -169,28 +169,28 @@ function AdminDashbboard() {
                 <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg" alt="Admin Image" />
               </div>
               <div className="admin-name">
-                <h4 className="heading-font">Admin Name</h4>
+                <h4 className="heading-font">{localStorage.getItem("userEmail")}</h4>
               </div>
             </div>
             <div className="admin-menus">
               <ul>
-                <Link to={"/admin/dashboard/schools"}>
+                <Link to={"/admin/dashboard/schools"} style={name.name == "schools" ? { background: "#f1f1f1" } : {}}>
                   <i className="fa-solid fa-school"></i>
                   <li className="text-font">Schools</li>
                 </Link>
-                <Link to={"/admin/dashboard/staff"}>
+                <Link to={"/admin/dashboard/staff"} style={name.name == "staff" ? { background: "#f1f1f1" } : {}}>
                   <i className="fa-regular fa-user"></i>
                   <li className="text-font">Staff</li>
                 </Link>
-                <Link to={"/admin/dashboard/annoucement"}>
+                <Link to={"/admin/dashboard/annoucement"} style={name.name == "annoucement" ? { background: "#f1f1f1" } : {}}>
                   <i className="fa-solid fa-bullhorn"></i>
                   <li className="text-font">Annoucement</li>
                 </Link>
-                <Link to={"/admin/dashboard/news"}>
+                <Link to={"/admin/dashboard/news"} style={name.name == "news" ? { background: "#f1f1f1" } : {}}>
                   <i className="fa-regular fa-newspaper"></i>
                   <li className="text-font">News and Events</li>
                 </Link>
-                <Link to={"/admin/dashboard/departments"}>
+                <Link to={"/admin/dashboard/departments"} style={name.name == "departments" ? { background: "#f1f1f1" } : {}}>
                   <i className="fa-regular fa-newspaper"></i>
                   <li className="text-font">Departments</li>
                 </Link>
