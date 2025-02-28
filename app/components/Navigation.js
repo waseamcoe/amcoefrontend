@@ -6,11 +6,9 @@ import SmallLoading from "../components/SmallLoading"
 import StateContext from "../StateContext"
 import { useImmer } from "use-immer"
 import Axios from "axios"
-import DispatchContext from "../DispatchContext"
 
 function Navigation() {
   const appState = useContext(StateContext)
-  const appDispatch = useContext(DispatchContext)
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [state, setState] = useImmer({
     schools: [],
@@ -47,7 +45,7 @@ function Navigation() {
 
   return (
     <>
-      <div className="header" onClick={() => appDispatch({ type: "openPopUp" })}>
+      <div className="header">
         <div className="logo">
           <div className="logo-img">
             <Link to="/">
