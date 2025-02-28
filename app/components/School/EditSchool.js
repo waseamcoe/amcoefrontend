@@ -244,7 +244,7 @@ function EditSchool(props) {
                   Cancel
                 </button>
                 <button className="action-button" style={{ background: "rgb(70, 128, 255)" }}>
-                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : appState.school.name ? "Update" : "Create School"}
+                  {state.isSubmitting ? <SmallLoading width={"20px"} height={"20px"} border={"2px solid #fff"} borderBotton={"2px solid transparent"} /> : appState.school.name ? "Update" : "Submit"}
                 </button>
               </div>
             </form>

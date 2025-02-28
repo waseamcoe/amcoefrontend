@@ -39,6 +39,8 @@ const startOfHTML = `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Abel:wght@0,200...1000;1,200...1000&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <meta name="google-site-verification" content="E8NNf-rPeUR81--JzfDyPtlSO-w8CElPoVkhnpC8JbY" />
   </head>
   <body>

@@ -17,6 +17,7 @@ import AdminDashbboard from "./components/AdminDashbboard"
 import { useImmerReducer } from "use-immer"
 import SingleSchoolPage from "./components/SingleSchoolPage"
 import Loginpage from "./components/Staff/LoginPage"
+import ApplicationForm from "./components/ApplicationForm"
 const SingleDeptPage = React.lazy(() => import("./components/SingleDeptPage"))
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
     alertDanger: false,
     alertSucess: false,
     flashMessage: "",
+    showPopUp: true,
   }
 
   function reducer(draft, action) {
@@ -114,6 +116,14 @@ function App() {
       case "hideSuccessAlert":
         draft.alertSucess = false
         break
+
+      // Notification pop up settings
+      case "closePopUp":
+        draft.showPopUp = false
+        break
+      case "openPopUp":
+        draft.showPopUp = true
+        break
     }
   }
   const [state, dispatch] = useImmerReducer(reducer, initialState)
@@ -140,6 +150,7 @@ function App() {
               <Route path="/history-of-amcoe" element={<About />} exact />
               <Route path="/department/:id" element={<SingleDeptPage />} />
               <Route path="/school/:id" element={<SingleSchoolPage />} />
+              <Route path="/apply" element={<ApplicationForm />} />
               <Route path="/admin/dashboard/:name" element={state.isLogin ? <AdminDashbboard /> : <Loginpage />} />
               <Route path="/news/:id" element={<SingleNewsPage />} />
               <Route path="*" element={<PageNotFound />} />

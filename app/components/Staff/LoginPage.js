@@ -277,7 +277,7 @@ function LoginPage() {
                       ) : (
                         <>
                           <p>LOG ME IN</p>
-                          <i className="fas fa-sign-in"></i>
+                          <i className="bx bx-log-in"></i>
                         </>
                       )}
                     </button>
