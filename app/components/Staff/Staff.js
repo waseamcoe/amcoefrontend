@@ -128,17 +128,17 @@ function Staff(props) {
       {showDetail && <ViewSingleStaff title={props.title} pic={props.pic} firstname={props.firstName} lastname={props.lastName} middlename={props.middleName} acadBio={props.acadBio} gender={props.gender} email={props.email} role={props.role} school={props.school} department={props.department} setShowDetail={setShowDetail} />}
       {showDialog && <DialogBox data={`Are you sure you want to delete the staff "${props.firstName} ${props.lastName}"?`} setShowDialog={setShowDialog} setSentRequest={setSentRequest} />}
       <tr>
-        <td>{props.index}</td>
-        <td>{props.title}</td>
+        <td title={props.index}>{props.index}</td>
+        <td title={props.title}>{props.title}</td>
         <td>
           <img src={props.pic ? props.pic : "https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg"} alt="staff photo" />
         </td>
-        <td>
+        <td title={`${props.firstName} ${props.lastName} ${props.middleName}`}>
           {props.firstName} {props.lastName} {props.middleName}
         </td>
-        <td>{props.role}</td>
-        <td>{props.gender}</td>
-        <td>{props.department}</td>
+        <td title={props.role}>{props.role}</td>
+        <td title={props.gender}>{props.gender}</td>
+        <td title={props.department}>{props.department}</td>
         <td className="table-actions">
           <div className="action-cont">
             <div className="action-view" title="Detail" onClick={() => setShowDetail(true)}>

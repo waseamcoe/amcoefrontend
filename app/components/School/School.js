@@ -114,21 +114,21 @@ function School(props) {
       {showDetail && <ViewSingleSchool name={props.name} description={props.description} mission={props.mission} vision={props.vision} hod={props.hod} setShowDetail={setShowDetail} />}
       {showDialog && <DialogBox data={`Are you sure you want to delete "${props.name}"?`} setShowDialog={setShowDialog} setSentRequest={setSentRequest} />}
       <tr>
-        <td>{props.index}</td>
+        <td title={props.index}>{props.index}</td>
         <td>{props.name}</td>
-        <td>
+        <td title={props.description}>
           <p className="text-truncate">{props.description}</p>
         </td>
         {/* <td>
           <img src={props.pic ? props.pic : "https://res.cloudinary.com/dmw39pbxq/image/upload/v1723382045/vecteezy_education-vector-logo-open-book-dictionary-textbook-or_4263549_yuzary.jpg"} alt="School photo" />
         </td> */}
-        <td>
+        <td title={props.mission}>
           <p className="text-truncate">{props.mission}</p>
         </td>
-        <td>
+        <td title={props.vision}>
           <p className="text-truncate">{props.vision}</p>
         </td>
-        <td>{props.hod}</td>
+        <td title={props.hod}>{props.hod}</td>
 
         <td className="table-actions">
           <div className="action-cont">

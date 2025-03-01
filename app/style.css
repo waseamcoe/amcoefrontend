@@ -1391,6 +1391,7 @@ a {
 
 .news-pic-cont {
   width: 100%;
+  max-width: 600px;
 }
 
 .news-pic {

@@ -106,11 +106,11 @@ function News(props) {
       {showDetail && <ViewSingleNews head={props.head} body={props.body} date={props.date} pic={props.pic} setShowDetail={setShowDetail} />}
       {showDialog && <DialogBox data={`Are you sure you want to delete this news?`} setShowDialog={setShowDialog} setSentRequest={setSentRequest} />}
       <tr>
-        <td>{props.index}</td>
-        <td>
+        <td title={props.index}>{props.index}</td>
+        <td title={props.head}>
           <p className="text-truncate">{props.head}</p>
         </td>
-        <td>
+        <td title={props.body}>
           <p className="text-truncate">{props.body}</p>
         </td>
         <td>
