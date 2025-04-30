@@ -6,10 +6,8 @@ import StateContext from "../../StateContext"
 import DispatchContext from "../../DispatchContext"
 import { CSSTransition } from "react-transition-group"
 import SmallLoading from "../SmallLoading"
-import Loading from "../Loading"
 
 function LoginPage() {
-  let navigate = useNavigate()
   const name = useParams()
   const appState = useContext(StateContext)
   const appDispatch = useContext(DispatchContext)

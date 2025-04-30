@@ -1,8 +1,27 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { Link } from "react-router-dom"
+import StateContext from "../StateContext"
 import Button from "./ReusableComp/Button"
+import SmallLoading from "./SmallLoading"
 
 function Welcome() {
+  const appState = useContext(StateContext)
+  // fetched all school detail in the database
+  async function getNews() {
+    Axios.get(`${appState.backendURL}/admin/dashboard/news-limit`)
+      .then(response => {
+        setNews(response.data)
+      })
+      .catch(err => {
+        if (err.message === "Network Error") {
+          appDispatch({ type: "setFlashMessage", message: "Check your newtwork and try again later" })
+          appDispatch({ type: "showDangerAlert" })
+        } else {
+          appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+          appDispatch({ type: "showDangerAlert" })
+        }
+      })
+  }
   return (
     <>
       <div className="welcome-content-container">
@@ -22,19 +41,28 @@ function Welcome() {
             <Button label={"Read More"} />
           </Link>
         </div>
+
         <div className="campus-spotlight">
-          <div className="content-headers">
-            <h1 className="headings">
-              Campus Spotlight <i class="fa-solid fa-rss"></i>
-            </h1>
-          </div>
-          <div className="welcome-description-img" style={{ float: "none", margin: 0, width: "100%", marginBottom: "20px", height: "200px" }}>
-            <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_10/v1722247565/amco5_xfj8dr.jpg" />
-          </div>
-          <div>
-            <p className="text-font">Computer science students during their visit to the national data center, which is among the biggest data centers in the nation</p>
-            <Button label={"More Spotlight"} />
-          </div>
+          {appState.allNews.length ? (
+            <>
+              <div className="content-headers">
+                <h1 className="headings">
+                  Campus Spotlight <i class="fa-solid fa-rss"></i>
+                </h1>
+              </div>
+              <div className="welcome-description-img" style={{ float: "none", margin: 0, width: "100%", marginBottom: "20px", height: "200px" }}>
+                {appState.allNews[0].pic ? <img src={`${appState.allNews[0].pic}`} /> : <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_10/v1722247565/amco5_xfj8dr.jpg" />}
+              </div>
+              <div>
+                <p className="text-font text-truncate">{appState.allNews[0].body}</p>
+                <Link className="button" to={`/news/${appState.allNews[0]._id}`}>
+                  Read more...
+                </Link>
+              </div>
+            </>
+          ) : (
+            <SmallLoading position="relative" top="100%" heigth="100px" />
+          )}
         </div>
       </div>
     </>

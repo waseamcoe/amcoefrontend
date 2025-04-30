@@ -109,8 +109,8 @@ function Navigation() {
                   <Link to={"/student/portal"}>
                     <li>Student Portal</li>
                   </Link>
-                  <Link to={"/student/elearning"}>
-                    <li>E-learning</li>
+                  <Link to={"/admin/dashboard/dashboard"}>
+                    <li>Admin Portal</li>
                   </Link>
                   <Link to={"/alumni"}>
                     <li>Alumni</li>
@@ -165,9 +165,9 @@ function Navigation() {
                   <i class="fas fa-search"></i>
                 </li>
               </a>
-              <a href="#">
-                <Button label={"Resources"} />
-              </a>
+              <Link to="/apply">
+                <Button label={"Apply Now"} />
+              </Link>
             </ul>
           </div>
         </div>

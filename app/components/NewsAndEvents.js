@@ -54,6 +54,7 @@ function NewsAndEvents() {
     Axios.get(`${appState.backendURL}/admin/dashboard/news-limit`)
       .then(response => {
         setNews(response.data)
+        appDispatch({ type: "setNews", data: response.data })
       })
       .catch(err => {
         if (err.message === "Network Error") {

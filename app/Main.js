@@ -25,18 +25,22 @@ function App() {
     isNavOpen: false,
     isEditOpen: false,
     isEditNewsOpen: false,
+    isEditAnnoucementOpen: false,
     isEditSchoolOpen: false,
     isEditDepartmentOpen: false,
     isLogin: false,
-    backendURL: "https://waseamcoe.onrender.com",
+    // backendURL: "https://waseamcoe.onrender.com",
+    backendURL: "http://192.168.126.77:8000",
     user: {},
     school: {},
     news: {},
+    annoucement: {},
     department: {},
+    allNews: [],
     alertDanger: false,
     alertSucess: false,
     flashMessage: "",
-    showPopUp: true,
+    showPopUp: false,
   }
 
   function reducer(draft, action) {
@@ -100,6 +104,18 @@ function App() {
         draft.news = action.news
         break
 
+      // Annooucements settings
+      case "openEditAnnoucement":
+        draft.isEditAnnoucementOpen = true
+        break
+      case "closeEditAnnoucement":
+        draft.isEditAnnoucementOpen = false
+        draft.annoucement = {}
+        break
+      case "setEditAnnoucement":
+        draft.annoucement = action.annoucement
+        break
+
       // setting for flash messages
       case "setFlashMessage":
         draft.flashMessage = action.message
@@ -123,6 +139,11 @@ function App() {
         break
       case "openPopUp":
         draft.showPopUp = true
+        break
+
+      // All news settings
+      case "setNews":
+        draft.allNews = action.data
         break
     }
   }
@@ -152,7 +173,8 @@ function App() {
               <Route path="/school/:id" element={<SingleSchoolPage />} />
               <Route path="/apply" element={<ApplicationForm />} />
               <Route path="/admin/dashboard/:name" element={state.isLogin ? <AdminDashbboard /> : <Loginpage />} />
-              <Route path="/news/:id" element={<SingleNewsPage />} />
+              <Route path="/news/:id" element={<SingleNewsPage isNews={true} />} />
+              <Route path="/annoucement/:id" element={<SingleNewsPage />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Suspense>

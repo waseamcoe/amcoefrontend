@@ -746,6 +746,8 @@ a {
   justify-content: space-between;
   width: 85%;
   gap: 3rem;
+  position: relative;
+  align-items: flex-start;
 }
 
 .welcome-description {
@@ -833,6 +835,7 @@ a {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 100px;
+    position: relative;
   }
   .welcome-description-img {
     width: 100%;
@@ -1720,6 +1723,7 @@ a {
 }
 .action-view {
   color: #666;
+  display: grid;
 }
 .action-delete {
   color: rgb(220, 38, 38);
@@ -2640,4 +2644,14 @@ th {
 
 .apply-page-description h3 {
   color: #444;
+}
+
+.chart-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.chart-container canvas {
+  border: 1ps solid #ccc;
+  border-radius: 15px;
 }

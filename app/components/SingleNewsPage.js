@@ -11,7 +11,7 @@ import Navigation from "./Navigation"
 import SmallLoading from "./SmallLoading"
 import FlashMessage from "./ReusableComp/FlashMessage"
 
-function SingleNewsPage() {
+function SingleNewsPage(props) {
   const appState = useContext(StateContext)
   const appDispatch = useContext(DispatchContext)
   const newsId = useParams()
@@ -31,10 +31,26 @@ function SingleNewsPage() {
     }
   }
 
+  // fetched relevant annoucement detail in the database
+  async function getAnnoucementDetails() {
+    try {
+      const response = await Axios.get(`${url}/annoucement/${newsId.id}`)
+      document.title = `${response.data.head}`
+      setNewsDetail(response.data)
+    } catch (error) {
+      appDispatch({ type: "setFlashMessage", message: "Something went wrong, try again later" })
+      appDispatch({ type: "showDangerAlert" })
+    }
+  }
+
   // components effets
   useEffect(() => {
     scrollTo(0, 0)
-    getNewsDetails()
+    if (props.isNews) {
+      getNewsDetails()
+    } else {
+      getAnnoucementDetails()
+    }
   }, [])
   return (
     <>

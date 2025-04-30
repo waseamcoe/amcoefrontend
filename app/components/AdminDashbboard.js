@@ -12,12 +12,13 @@ import Staff from "./Staff/Staff"
 import School from "./School/School"
 import EditSchool from "./School/EditSchool"
 import News from "./News/News"
+import Annoucement from "./Annoucements/Annoucement"
 import EditNews from "./News/EditNews"
+import EditAnnoucement from "./Annoucements/EditAnnoucement"
 import Department from "./Department/Department"
 import EditDepartment from "./Department/EditDepartment"
 import FlashMessage from "./ReusableComp/FlashMessage"
-import DialogBox from "../DialogBox"
-import ViewSingleStaff from "./Staff/ViewSingleStaff"
+import AdminCharts from "./AdminCharts"
 
 function AdminDashbboard() {
   const menu = useRef(null)
@@ -32,6 +33,8 @@ function AdminDashbboard() {
     schools: [],
     departments: [],
     news: [],
+    annoucement: [],
+    dashboard: [],
   })
 
   // functions
@@ -48,6 +51,9 @@ function AdminDashbboard() {
         break
       case "news":
         appDispatch({ type: "openEditNews" })
+        break
+      case "annoucement":
+        appDispatch({ type: "openEditAnnoucement" })
         break
     }
   }
@@ -69,6 +75,10 @@ function AdminDashbboard() {
       case "news":
         appDispatch({ type: "closeEditNews" })
         appDispatch({ type: "setEditNews", news: {} })
+        break
+      case "annoucement":
+        appDispatch({ type: "closeEditAnnoucement" })
+        appDispatch({ type: "setEditAnnoucement", annoucement: {} })
         break
     }
   }
@@ -100,6 +110,7 @@ function AdminDashbboard() {
               draft.schools = []
               draft.departments = []
               draft.news = []
+              draft.annoucement = []
               draft.staff = response.data
             })
             break
@@ -112,6 +123,7 @@ function AdminDashbboard() {
               draft.staff = []
               draft.departments = []
               draft.news = []
+              draft.annoucement = []
               draft.schools = response.data
             })
             break
@@ -124,6 +136,7 @@ function AdminDashbboard() {
               draft.staff = []
               draft.news = []
               draft.schools = []
+              draft.annoucement = []
               draft.departments = response.data
             })
             break
@@ -136,7 +149,34 @@ function AdminDashbboard() {
               draft.staff = []
               draft.departments = []
               draft.schools = []
+              draft.annoucement = []
               draft.news = response.data
+            })
+            break
+          case "annoucement":
+            setState(draft => {
+              // Reset the state data to empty for the sake of next rendering
+              if (sidebar.current.classList.contains("slideIn")) {
+                hideSidebar()
+              }
+              draft.staff = []
+              draft.departments = []
+              draft.schools = []
+              draft.news = []
+              draft.annoucement = response.data
+            })
+            break
+          case "dashboard":
+            setState(draft => {
+              // Reset the state data to empty for the sake of next rendering
+              if (sidebar.current.classList.contains("slideIn")) {
+                hideSidebar()
+              }
+              draft.staff = []
+              draft.departments = []
+              draft.schools = []
+              draft.news = []
+              draft.annoucement = []
             })
             break
         }
@@ -158,10 +198,11 @@ function AdminDashbboard() {
       <CSSTransition in={appState.alertDanger || appState.alertSucess} timeout={300} classNames={"show-flash"} unmountOnExit>
         <FlashMessage message={appState.flashMessage} myclass={appState.alertDanger ? "alert-danger" : "alert-success"} />
       </CSSTransition>
-      {appState.isEditOpen || appState.isEditNewsOpen || appState.isEditSchoolOpen || appState.isEditDepartmentOpen ? <div onClick={handleCloseOverlay} className="staff-edit-overlay"></div> : ""}
+      {appState.isEditOpen || appState.isEditNewsOpen || appState.isEditSchoolOpen || appState.isEditDepartmentOpen || appState.isEditAnnoucementOpen ? <div onClick={handleCloseOverlay} className="staff-edit-overlay"></div> : ""}
       {appState.isEditOpen ? <EditStaff setStaff={setState} staff={state.staff} /> : ""}
       {appState.isEditSchoolOpen ? <EditSchool setSchool={setState} school={state.schools} /> : ""}
       {appState.isEditNewsOpen ? <EditNews setNews={setState} news={state.news} /> : ""}
+      {appState.isEditAnnoucementOpen ? <EditAnnoucement setAnnoucement={setState} annoucement={state.annoucement} /> : ""}
       {appState.isEditDepartmentOpen ? <EditDepartment setDepartment={setState} department={state.departments} /> : ""}
       <section className="admin-section">
         <div className="admin-cont" style={state.showDialog ? { filter: "blur(2px)" } : {}}>
@@ -235,7 +276,7 @@ function AdminDashbboard() {
                 <div className="notification-cont">
                   <i className="bx bx-bell"></i>
                 </div>
-                <div className="notification-cont">
+                <div className="notification-cont" title={localStorage.getItem("userEmail")}>
                   <i className="bx bx-user"></i>
                 </div>
               </div>
@@ -353,7 +394,7 @@ function AdminDashbboard() {
                   <div className="admin-table">
                     <div className="table-head">
                       <div>
-                        <h2 className="heading-font">Staff record({state.staff.length ? state.staff.length : ""})</h2>
+                        <h2 className="heading-font">News record({state.news.length ? state.news.length : ""})</h2>
                       </div>
                       <div className="admin-school-list-head">
                         <button className="action-button" onClick={handleEdit} style={{ boxShadow: "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px" }}>
@@ -445,6 +486,57 @@ function AdminDashbboard() {
                     </div>
                   </div>
                 </div>
+              ) : name.name == "annoucement" ? (
+                // <div className="admin-school-list">{state.news.length ? state.news.map(news => <News newSchool={false} setState={setState} id={news._id} head={news.head} body={news.body} date={news.date} pic={news.pic} />) : <SmallLoading />}</div>
+                <div className="admin-school-list">
+                  <div className="admin-table">
+                    <div className="table-head">
+                      <div>
+                        <h2 className="heading-font">Announcement record({state.annoucement.length ? state.annoucement.length : ""})</h2>
+                      </div>
+                      <div className="admin-school-list-head">
+                        <button className="action-button" onClick={handleEdit} style={{ boxShadow: "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px" }}>
+                          <p className="text-font">Make Annoucement</p>
+                          <i className="bx bxs-add-to-queue"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="table-body">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>
+                              <h4>#</h4>
+                            </th>
+
+                            <th>
+                              <h4>Head</h4>
+                            </th>
+
+                            <th>
+                              <h4>Body</h4>
+                            </th>
+                            <th>
+                              <h4>Date</h4>
+                            </th>
+                            <th>
+                              <h4>Pic</h4>
+                            </th>
+                            <th>
+                              <h4>id</h4>
+                            </th>
+                            <th>
+                              <h4>Action</h4>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>{state.annoucement.length ? state.annoucement.map((annoucement, index) => <Annoucement index={index + 1} state={state} setState={setState} head={annoucement.head} body={annoucement.body} date={annoucement.date} id={annoucement._id} pic={annoucement.pic} announceNotification={annoucement.announceNotification} />) : <SmallLoading />}</tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              ) : name.name == "dashboard" ? (
+                <AdminCharts />
               ) : (
                 ""
               )}
