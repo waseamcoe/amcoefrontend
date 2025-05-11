@@ -117,7 +117,7 @@ export default function Slider() {
             <p className="text-font">During our last convention. A group picture of our lectures at the school. A group picture of our lectures at the school.</p>
             <Button label={"Learn More"} />
           </div>
-          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/t_Banner 16:9/v1746393691/IV_jaquvi.png" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1746393691/IV_jaquvi.png" />
         </div>
       </div>
     </div>

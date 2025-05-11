@@ -165,8 +165,8 @@ function Navigation() {
                   <i class="fas fa-search"></i>
                 </li>
               </a>
-              <Link to="/apply">
-                <Button label={"Apply Now"} />
+              <Link to="">
+                <Button label={"Resources"} />
               </Link>
             </ul>
           </div>
