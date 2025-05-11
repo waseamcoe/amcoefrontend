@@ -113,11 +113,11 @@ export default function Slider() {
         <div className="slider">
           <div className="overlay"></div> {/* {For the overlay} */}
           <div className="background-description">
-            <h1>10th Matriculation</h1>
+            <h1>11th Matriculation</h1>
             <p className="text-font">During our last convention. A group picture of our lectures at the school. A group picture of our lectures at the school.</p>
             <Button label={"Learn More"} />
           </div>
-          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/q_50/v1722247565/amco5_xfj8dr.jpg" />
+          <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/t_Banner 16:9/v1746393691/IV_jaquvi.png" />
         </div>
       </div>
     </div>
