@@ -6,27 +6,17 @@ const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const fse = require("fs-extra")
 
-/*
-  Because I didn't bother making CSS part of our
-  webpack workflow for this project I'm just
-  manually copying our CSS file to the DIST folder. 
-*/
 class RunAfterCompile {
   apply(compiler) {
     compiler.hooks.done.tap("Copy files", function () {
+      // If you switch to the webpack-based CSS flow below,
+      // you might not even need to manually copy style.css anymore.
       fse.copySync("./app/style.css", "./dist/style.css")
-
-      /*
-        If you needed to copy another file or folder
-        such as your "images" folder, you could just
-        call fse.copySync() as many times as you need
-        to here to cover all of your files/folders.
-      */
     })
   }
 }
 
-config = {
+let config = {
   entry: "./app/Main.js",
   output: {
     publicPath: "/",
@@ -54,6 +44,15 @@ config = {
             presets: ["@babel/preset-react", ["@babel/preset-env", { targets: { node: "12" } }]],
           },
         },
+      },
+      /* --- ADDED TAILWIND/CSS RULE HERE --- */
+      {
+        test: /\.css$/i,
+        use: [
+          "style-loader", // Injects styles into DOM
+          "css-loader", // Resolves @import and url()
+          "postcss-loader", // Processes Tailwind + Autoprefixer
+        ],
       },
     ],
   },

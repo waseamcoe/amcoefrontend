@@ -19,6 +19,8 @@ import Department from "./Department/Department"
 import EditDepartment from "./Department/EditDepartment"
 import FlashMessage from "./ReusableComp/FlashMessage"
 import AdminCharts from "./AdminCharts"
+import ProfileInfo from "./ApplicationForm/ProfileInfo"
+import OlevelInfo from "./ApplicationForm/OlevelInfo"
 
 function AdminDashbboard() {
   const menu = useRef(null)
@@ -35,6 +37,16 @@ function AdminDashbboard() {
     news: [],
     annoucement: [],
     dashboard: [],
+    subjects: ["GENERAL MATHEMATICS", "ENGLISH LANGUAGE", "COMMERCE", "FINANCIAL ACCOUNTING", "CHRISTIAN RELIGIOUS STUDIES", "ECONOMICS", " 	GEOGRAPHY", "GOVERNMENT", "HISTORY", "ISLAMIC STUDIES", "LITERATURE IN ENGLISH", "CIVIC EDUCATION", "ARABIC", "FRENCH", "HAUSA", "IGBO", "YORUBA", "FURTHER MATHEMATICS", "GENERAL MATHEMATICS", "AGRICULTURAL SCIENCE", "BIOLOGY", "CHEMISTRY", "HEALTH EDUCATION/HEALTH SCIENCE", "PHYSICAL EDUCATION", "PHYSICS", "AUTO MECHANICS", "BUILDING CONSTRUCTION", "METAL WORK", "TECHNICAL DRAWING", "WOODWORK", " 	BASIC ELECTRICITY", "BASIC ELECTRONICS", " 	CLOTHING AND TEXTILES", "FOODS AND NUTRITION", "HOME MANAGEMENT", "MUSIC", "VISUAL ART"],
+    grades: ["A1", "B2", "B3", "C4", "C5", "C6", "D7", "E8", "F9"],
+    oLevel: {
+      sitting: 1,
+      examType: "",
+      examYear: null,
+      examCenter: "",
+      examNo: "",
+      examGrades: [],
+    },
   })
 
   // functions
@@ -193,7 +205,8 @@ function AdminDashbboard() {
       })
   }, [name.name])
 
-  return (
+  return !window.location.href.includes("student") ? (
+    // return the staff dashboard
     <>
       <CSSTransition in={appState.alertDanger || appState.alertSucess} timeout={300} classNames={"show-flash"} unmountOnExit>
         <FlashMessage message={appState.flashMessage} myclass={appState.alertDanger ? "alert-danger" : "alert-success"} />
@@ -266,12 +279,12 @@ function AdminDashbboard() {
                 <div className="notification-cont">
                   <i className="bx bx-message-detail"></i>
                   {/* <div className="dialog-cont">
-                    <div className="dialog-head">
-                      <div className="dialog-head-text">
-                        <h3 className="heading-font">Notification</h3>
-                      </div>
+                  <div className="dialog-head">
+                    <div className="dialog-head-text">
+                      <h3 className="heading-font">Notification</h3>
                     </div>
-                  </div> */}
+                  </div>
+                </div> */}
                 </div>
                 <div className="notification-cont">
                   <i className="bx bx-bell"></i>
@@ -495,9 +508,9 @@ function AdminDashbboard() {
                         <h2 className="heading-font">Announcement record({state.annoucement.length ? state.annoucement.length : ""})</h2>
                       </div>
                       <div className="admin-school-list-head">
-                        <button className="action-button" onClick={handleEdit} style={{ boxShadow: "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px" }}>
-                          <p className="text-font">Make Annoucement</p>
-                          <i className="bx bxs-add-to-queue"></i>
+                        <button onClick={handleEdit} className="flex items-center gap-2 px-6 py-2.5 bg-[#4d54da] hover:bg-[#3f46b8] text-white rounded-lg font-bold text-sm tracking-wide shadow-md shadow-indigo-200 transition-all duration-200 active:scale-95 group">
+                          <span>MAKE ANNOUNCEMENT</span>
+                          <i className="bx bxs-add-to-queue text-lg group-hover:scale-110 transition-transform"></i>
                         </button>
                       </div>
                     </div>
@@ -540,6 +553,77 @@ function AdminDashbboard() {
               ) : (
                 ""
               )}
+            </div>
+          </main>
+        </div>
+      </section>
+    </>
+  ) : (
+    <>
+      <CSSTransition in={appState.alertDanger || appState.alertSucess} timeout={300} classNames={"show-flash"} unmountOnExit>
+        <FlashMessage message={appState.flashMessage} myclass={appState.alertDanger ? "alert-danger" : "alert-success"} />
+      </CSSTransition>
+      <section className="admin-section">
+        <div className="admin-cont" style={state.showDialog ? { filter: "blur(2px)" } : {}}>
+          <nav ref={sidebar} className="admin-sidebar1">
+            <div className="admin-sidebar1-head">
+              <div className="admin-img-cont">
+                <img src="https://res.cloudinary.com/dmw39pbxq/image/upload/v1722963095/admin-placeholder_nilesu.jpg" alt="Admin Image" />
+              </div>
+              <div className="admin-name">
+                <h4 className="heading-font">{localStorage.getItem("userEmail")}</h4>
+              </div>
+            </div>
+            <div className="admin-menus">
+              <ul>
+                <Link to={"/student/dashboard/6835e85641370cfc5958ae9c/dashboard"} style={name.name == "dashboard" ? { background: "rgb(70, 128, 255)", color: "#fff" } : {}}>
+                  <i className="bx bx-bar-chart-alt-2"></i>
+                  <li className="text-font" style={name.name == "dashboard" ? { color: "#fff" } : {}}>
+                    Dashboard
+                  </li>
+                </Link>
+                <Link to={"/student/dashboard/6835e85641370cfc5958ae9c/profile"} style={name.name == "profile" ? { background: "rgb(70, 128, 255)", color: "#fff" } : {}}>
+                  <i className="bx bxs-school"></i>
+                  <li className="text-font" style={name.name == "profile" ? { color: "#fff" } : {}}>
+                    Profile
+                  </li>
+                </Link>
+              </ul>
+            </div>
+          </nav>
+          <main className="admin-sidebar2">
+            <div ref={overlay} onClick={hideSidebar}></div>
+            <div className="admin-main-head">
+              <div ref={menu} onClick={showSidebar} className="notification-cont admin-hamburger">
+                <i className="fa-solid fa-bars"></i>
+              </div>
+              <div className="notification-sidebar2">
+                <div className="notification-cont">
+                  <i className="bx bx-message-detail"></i>
+                  {/* <div className="dialog-cont">
+                  <div className="dialog-head">
+                    <div className="dialog-head-text">
+                      <h3 className="heading-font">Notification</h3>
+                    </div>
+                  </div>
+                </div> */}
+                </div>
+                <div className="notification-cont">
+                  <i className="bx bx-bell"></i>
+                </div>
+                <div className="notification-cont" title={localStorage.getItem("userEmail")}>
+                  <i className="bx bx-user"></i>
+                </div>
+              </div>
+            </div>
+            <div className="admin-sidebar-main-cont">
+              <div className="admin-sidebar-Dashboard">
+                <h2 className="heading-font">Dashboard</h2>
+                <p className="text-font">
+                  <span style={{ color: "rgb(70, 128, 255)" }}>Home</span> / {name.name == "dashboard" ? "Dashboard" : name.name == "profile" ? "Profile" : name.name == "edit-profile" ? "Edit profile" : name.name == "staff" ? "Staff" : name.name == "annoucement" ? "Annoucements" : name.name == "news" ? "News and Events" : ""}
+                </p>
+              </div>
+              {name.name == "dashboard" ? "" : name.name == "profile" ? <ProfileInfo state={state} setState={setState} grades={state.grades} subjects={state.subjects} /> : ""}
             </div>
           </main>
         </div>

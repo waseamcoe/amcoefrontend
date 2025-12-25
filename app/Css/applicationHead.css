@@ -1,0 +1,52 @@
+.application-container {
+  height: 100vh;
+  background: #f1f1f1;
+}
+
+.staff-edit-head-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.staff-edit-head-flex div {
+  width: 100%;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  padding: 5px 0;
+}
+
+.staff-edit-head-flex div:hover {
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.staff-edit-head-flex h4 {
+  color: #777;
+  font-size: 1rem;
+}
+
+.application-main-heading {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.application-main-heading h4 {
+  margin-bottom: 12px;
+}
+
+.application-main-heading p {
+  width: 80%;
+  margin: 0 auto;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 36px;
+}
+
+.apply-page-description {
+  padding: 0 30px;
+  margin-bottom: 24px;
+}
+
+.apply-page-description h3 {
+  color: #444;
+}

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 import StateContext from "./StateContext"
 import DispatchContext from "./DispatchContext"
+import "./style.css"
 
 // components
 import Home from "./components/Home"
@@ -17,7 +18,8 @@ import AdminDashbboard from "./components/AdminDashbboard"
 import { useImmerReducer } from "use-immer"
 import SingleSchoolPage from "./components/SingleSchoolPage"
 import Loginpage from "./components/Staff/LoginPage"
-import ApplicationForm from "./components/ApplicationForm"
+import ApplicationForm from "./components/ApplicationForm/ApplicationForm"
+import CheckStatus from "./components/ApplicationForm/ChechStatus"
 const SingleDeptPage = React.lazy(() => import("./components/SingleDeptPage"))
 
 function App() {
@@ -28,8 +30,9 @@ function App() {
     isEditAnnoucementOpen: false,
     isEditSchoolOpen: false,
     isEditDepartmentOpen: false,
-    isLogin: false,
-    backendURL: "https://waseamcoe.onrender.com",
+    isLogin: Boolean(localStorage.getItem("token")),
+    // backendURL: "https://waseamcoe.onrender.com",
+    backendURL: "http://10.64.42.77:8000",
     user: {},
     school: {},
     news: {},
@@ -171,7 +174,9 @@ function App() {
               <Route path="/department/:id" element={<SingleDeptPage />} />
               <Route path="/school/:id" element={<SingleSchoolPage />} />
               <Route path="/apply" element={<ApplicationForm />} />
+              <Route path="/check-status" element={<CheckStatus />} />
               <Route path="/admin/dashboard/:name" element={state.isLogin ? <AdminDashbboard /> : <Loginpage />} />
+              <Route path="/student/dashboard/:id/:name" element={<AdminDashbboard />} />
               <Route path="/news/:id" element={<SingleNewsPage isNews={true} />} />
               <Route path="/annoucement/:id" element={<SingleNewsPage />} />
               <Route path="*" element={<PageNotFound />} />

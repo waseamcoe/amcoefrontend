@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Button from "./ReusableComp/Button"
 import SmallLoading from "../components/SmallLoading"
@@ -45,7 +45,7 @@ function Navigation() {
 
   return (
     <>
-      <div className="header">
+      <div className="header shadow-sm bg-white flex items-center justify-between px-5 sticky top-0">
         <div className="logo">
           <div className="logo-img">
             <Link to="/">
@@ -96,6 +96,9 @@ function Navigation() {
                   </Link>
                   <Link to={"/diploma"}>
                     <li>Diploma</li>
+                  </Link>
+                  <Link to={"/check-status"}>
+                    <li>Check Admission</li>
                   </Link>
                 </ul>
               </Link>
